@@ -1,0 +1,15 @@
+{
+  "name": "crafty",
+  "main": "dist/crafty.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "build",
+    "playgrounds",
+    "test",
+    "*.md",
+    "changelog.txt",
+    "Gruntfile.js",
+    "package.json"
+  ]
+}

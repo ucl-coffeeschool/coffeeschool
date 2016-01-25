@@ -1,0 +1,15 @@
+{
+  "name": "example-game",
+  "version": "1.0.0",
+  "description": "An example game made in crafty.js",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "beefy game.js"
+  },
+  "author": "CS FAM",
+  "license": "MIT",
+  "dependencies": {
+    "craftyjs": "^0.7.0"
+  }
+}
