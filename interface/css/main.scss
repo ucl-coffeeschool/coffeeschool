@@ -1,0 +1,130 @@
+// style colours. Try to use these as much as possible
+$color-text:#35404A;
+$color-bg:#DCE1E6;
+$color-primary:#E33C05;
+$color-primary-dark:darken($color-primary,20);
+
+// measures
+$measure-header-height:3rem;
+$measure-nav-width:20rem;
+
+html,body {
+    height:100%;
+    margin:0;
+    // stop pesky child elements from fiddling with layout.
+    overflow:auto;
+    padding-top:1px;
+    margin-top:-1px;
+    color:$color-text;
+    background:$color-bg;
+}
+nav {
+    position:absolute;
+    left:-$measure-nav-width;
+    width:$measure-nav-width;
+    height:100%;
+    top:0;
+    background:$color-primary-dark;
+    transition:left 0.25s ease-in-out;
+
+    &.active {
+        left:0;
+    }
+}
+
+.main {
+    width:100%;
+    height:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    transition:left 0.25s ease-in-out;
+    overflow:auto;
+    display:flex;
+    flex-flow:column;
+
+    &.active {
+        left:$measure-nav-width;
+    }
+
+    header {
+        height:$measure-header-height;
+        overflow:hidden;
+        display:block;
+        flex:0 0 auto;
+
+             * {
+                 display:inline-block;
+                 vertical-align:top;
+                 margin:0 0.5rem 0 0;
+                 height:$measure-header-height;
+                 line-height:$measure-header-height;
+                 font-size:2rem;
+             }
+
+             #menu-button {
+                 background:rgba($color-text,0.3);
+                 transition:background 0.25s ease-in-out,
+                 color 0.25s ease-in-out;
+                 color:$color-text;
+                 width:$measure-header-height;
+                 font-size:$measure-header-height;
+                 text-align:center;
+                 cursor:pointer;
+                 i {
+                     vertical-align:top;
+                     margin:0;
+                 }
+
+                 &:hover {
+                     background:$color-text;
+                     color:$color-bg;
+                 }
+             }
+         }
+
+         .container {
+             width:100%;
+             flex:1 1 auto;
+             display:flex;
+             flex-flow:row;
+         }
+
+         .div-half {
+             padding:10px;
+             flex:1 0 auto;
+             display:flex;
+         }
+
+         .div-content {
+             position:absolute;
+             overflow-y:auto;
+             flex:1 1 auto;
+         }
+
+         .flex-container {
+             margin:0;
+             display:flex;
+             flex-flow:column;
+             i > * {
+                 height:0;
+             }
+             div {
+                 flex:1 1 auto;
+             }
+             button {
+                 width:auto;
+                 height:auto;
+                 display:inline;
+             }
+             h1,h2,h3 {
+                 flex:none;
+             }
+         }
+     }
+
+canvas#game-preview {
+    width:100%;
+    height:100%;
+    background:darken($color-bg,20);
+}

@@ -1,0 +1,92 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+  padding-top: 1px;
+  margin-top: -1px;
+  color: #35404A;
+  background: #DCE1E6; }
+
+nav {
+  position: absolute;
+  left: -20rem;
+  width: 20rem;
+  height: 100%;
+  top: 0;
+  background: #7f2203;
+  transition: left 0.25s ease-in-out; }
+  nav.active {
+    left: 0; }
+
+.main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: left 0.25s ease-in-out;
+  overflow: auto;
+  display: flex;
+  flex-flow: column; }
+  .main.active {
+    left: 20rem; }
+  .main header {
+    height: 3rem;
+    overflow: hidden;
+    display: block;
+    flex: 0 0 auto; }
+    .main header * {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 0.5rem 0 0;
+      height: 3rem;
+      line-height: 3rem;
+      font-size: 2rem; }
+    .main header #menu-button {
+      background: rgba(53, 64, 74, 0.3);
+      transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
+      color: #35404A;
+      width: 3rem;
+      font-size: 3rem;
+      text-align: center;
+      cursor: pointer; }
+      .main header #menu-button i {
+        vertical-align: top;
+        margin: 0; }
+      .main header #menu-button:hover {
+        background: #35404A;
+        color: #DCE1E6; }
+  .main .container {
+    width: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: row; }
+  .main .div-half {
+    padding: 10px;
+    flex: 1 0 auto;
+    display: flex; }
+  .main .div-content {
+    position: absolute;
+    overflow-y: auto;
+    flex: 1 1 auto; }
+  .main .flex-container {
+    margin: 0;
+    display: flex;
+    flex-flow: column; }
+    .main .flex-container i > * {
+      height: 0; }
+    .main .flex-container div {
+      flex: 1 1 auto; }
+    .main .flex-container button {
+      width: auto;
+      height: auto;
+      display: inline; }
+    .main .flex-container h1, .main .flex-container h2, .main .flex-container h3 {
+      flex: none; }
+
+canvas#game-preview {
+  width: 100%;
+  height: 100%;
+  background: #a1aebc; }
+
+/*# sourceMappingURL=main.css.map */
