@@ -1,0 +1,3 @@
+[submodule "CraftyBox2D"]
+	path = CraftyBox2D
+	url = https://github.com/shogoki-vnz/CraftyBox2D
