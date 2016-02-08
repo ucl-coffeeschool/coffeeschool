@@ -17,6 +17,18 @@ nav {
   transition: left 0.25s ease-in-out; }
   nav.active {
     left: 0; }
+  nav a {
+    width: calc(100% - 2rem);
+    display: block;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    text-decoration: none;
+    color: #DCE1E6;
+    background: none;
+    transition: background 0.25s ease-in-out; }
+    nav a:hover {
+      background: #E33C05; }
 
 .main {
   width: 100%;
@@ -32,9 +44,14 @@ nav {
     left: 20rem; }
   .main header {
     height: 3rem;
+    background: #E33C05;
+    color: #DCE1E6;
     overflow: hidden;
     display: block;
     flex: 0 0 auto; }
+    .main header em {
+      margin-left: 1rem;
+      color: rgba(220, 225, 230, 0.7); }
     .main header * {
       display: inline-block;
       vertical-align: top;
@@ -45,7 +62,7 @@ nav {
     .main header #menu-button {
       background: rgba(53, 64, 74, 0.3);
       transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
-      color: #35404A;
+      color: #DCE1E6;
       width: 3rem;
       font-size: 3rem;
       text-align: center;
@@ -72,21 +89,40 @@ nav {
   .main .flex-container {
     margin: 0;
     display: flex;
-    flex-flow: column; }
+    min-width: 0;
+    flex-flow: column;
+    align-items: stretch; }
     .main .flex-container i > * {
       height: 0; }
     .main .flex-container div {
       flex: 1 1 auto; }
     .main .flex-container button {
-      width: auto;
-      height: auto;
-      display: inline; }
+      display: inline;
+      font-size: 1rem;
+      flex-shrink: 0;
+      align-self: flex-end;
+      vertical-align: top;
+      background: #0063C7;
+      color: #DCE1E6;
+      border: 2px solid #003061;
+      border-width: 1px 1px 3px 1px;
+      border-radius: 3px;
+      transition: background 0.1s ease-in-out, border-width 0.1s ease-in-out; }
+      .main .flex-container button:hover {
+        background: #2e96ff;
+        border-width: 1px 1px 4px 1px; }
+      .main .flex-container button:active {
+        border-width: 4px 1px 1px 1px;
+        background: #00172e; }
+      .main .flex-container button:focus {
+        outline: none; }
     .main .flex-container h1, .main .flex-container h2, .main .flex-container h3 {
       flex: none; }
+    .main .flex-container * {
+      width: auto;
+      align-self: stretch; }
 
 canvas#game-preview {
-  width: 100%;
-  height: 100%;
   background: #a1aebc; }
 
 /*# sourceMappingURL=main.css.map */

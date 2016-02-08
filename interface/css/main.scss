@@ -3,10 +3,13 @@ $color-text:#35404A;
 $color-bg:#DCE1E6;
 $color-primary:#E33C05;
 $color-primary-dark:darken($color-primary,20);
+$color-secondary:#0063C7;
+$color-secondary-dark:darken($color-secondary,20);
 
 // measures
 $measure-header-height:3rem;
 $measure-nav-width:20rem;
+$measure-navitem-height:3rem;
 
 html,body {
     height:100%;
@@ -30,6 +33,21 @@ nav {
     &.active {
         left:0;
     }
+
+    a {
+        width:calc(100% - 2rem);
+        display:block;
+        height:$measure-navitem-height;
+        line-height:$measure-navitem-height;
+        padding:0 1rem;
+        text-decoration:none;
+        color:$color-bg;
+        background:none;
+        transition:background 0.25s ease-in-out;
+        &:hover {
+            background:$color-primary;
+        }
+    }
 }
 
 .main {
@@ -49,9 +67,16 @@ nav {
 
     header {
         height:$measure-header-height;
+        background:$color-primary;
+        color:$color-bg;
         overflow:hidden;
         display:block;
         flex:0 0 auto;
+
+            em {
+                margin-left:1rem;
+                color:rgba($color-bg,0.7)
+            }
 
              * {
                  display:inline-block;
@@ -66,7 +91,7 @@ nav {
                  background:rgba($color-text,0.3);
                  transition:background 0.25s ease-in-out,
                  color 0.25s ease-in-out;
-                 color:$color-text;
+                 color:$color-bg;
                  width:$measure-header-height;
                  font-size:$measure-header-height;
                  text-align:center;
@@ -105,7 +130,9 @@ nav {
          .flex-container {
              margin:0;
              display:flex;
+             min-width:0;
              flex-flow:column;
+             align-items:stretch;
              i > * {
                  height:0;
              }
@@ -113,18 +140,45 @@ nav {
                  flex:1 1 auto;
              }
              button {
-                 width:auto;
-                 height:auto;
                  display:inline;
+                 font-size:1rem;
+                 flex-shrink:0;
+                 align-self:flex-end;
+                 vertical-align:top;
+                 background:$color-secondary;
+                 color:$color-bg;
+                 border:2px solid $color-secondary-dark;
+                 border-width:1px 1px 3px 1px;
+                 border-radius:3px;
+                 transition:background 0.1s ease-in-out, border-width 0.1s ease-in-out;
+
+                 &:hover {
+                     background:lighten($color-secondary,20);
+                     border-width:1px 1px 4px 1px;
+                 }
+
+                 &:active {
+                     border-width:4px 1px 1px 1px;
+                     background:darken($color-secondary-dark,10);
+                 }
+
+                 &:focus {
+                     outline:none;
+                 }
              }
              h1,h2,h3 {
                  flex:none;
              }
+             * {
+                 width:auto;
+                 align-self:stretch;
+             }
          }
      }
 
+#game-container {
+}
+
 canvas#game-preview {
-    width:100%;
-    height:100%;
     background:darken($color-bg,20);
 }
