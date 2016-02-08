@@ -1,8 +1,8 @@
+var editor = ace.edit("codeEditor");
+
 $(document).ready(function() {
     resizeCanvas();
-
 });
-    var editor = ace.edit("codeEditor");
 
 // Triggers on resize.
 $(window).resize(function() {
