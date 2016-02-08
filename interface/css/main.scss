@@ -117,12 +117,12 @@ nav {
 
          .div-half {
              padding:10px;
-             flex:1 0 auto;
+             width:calc(50% - 20px);
+             flex:0 0 auto;
              display:flex;
          }
 
          .div-content {
-             position:absolute;
              overflow-y:auto;
              flex:1 1 auto;
          }
@@ -150,11 +150,14 @@ nav {
                  border:2px solid $color-secondary-dark;
                  border-width:1px 1px 3px 1px;
                  border-radius:3px;
+                 bottom:0px;
+                 position:relative;
                  transition:background 0.1s ease-in-out, border-width 0.1s ease-in-out;
 
                  &:hover {
                      background:lighten($color-secondary,20);
                      border-width:1px 1px 4px 1px;
+                     bottom:1px;
                  }
 
                  &:active {
@@ -167,7 +170,7 @@ nav {
                  }
              }
              h1,h2,h3 {
-                 flex:none;
+                 flex:0 0 auto;
              }
              * {
                  width:auto;
@@ -181,4 +184,5 @@ nav {
 
 canvas#game-preview {
     background:darken($color-bg,20);
+    display:block;
 }

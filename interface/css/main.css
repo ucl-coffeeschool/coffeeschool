@@ -80,10 +80,10 @@ nav {
     flex-flow: row; }
   .main .div-half {
     padding: 10px;
-    flex: 1 0 auto;
+    width: calc(50% - 20px);
+    flex: 0 0 auto;
     display: flex; }
   .main .div-content {
-    position: absolute;
     overflow-y: auto;
     flex: 1 1 auto; }
   .main .flex-container {
@@ -107,22 +107,26 @@ nav {
       border: 2px solid #003061;
       border-width: 1px 1px 3px 1px;
       border-radius: 3px;
+      bottom: 0px;
+      position: relative;
       transition: background 0.1s ease-in-out, border-width 0.1s ease-in-out; }
       .main .flex-container button:hover {
         background: #2e96ff;
-        border-width: 1px 1px 4px 1px; }
+        border-width: 1px 1px 4px 1px;
+        bottom: 1px; }
       .main .flex-container button:active {
         border-width: 4px 1px 1px 1px;
         background: #00172e; }
       .main .flex-container button:focus {
         outline: none; }
     .main .flex-container h1, .main .flex-container h2, .main .flex-container h3 {
-      flex: none; }
+      flex: 0 0 auto; }
     .main .flex-container * {
       width: auto;
       align-self: stretch; }
 
 canvas#game-preview {
-  background: #a1aebc; }
+  background: #a1aebc;
+  display: block; }
 
 /*# sourceMappingURL=main.css.map */
