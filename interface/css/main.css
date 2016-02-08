@@ -1,7 +1,7 @@
 html, body {
   height: 100%;
   margin: 0;
-  overflow: auto;
+  overflow: hidden;
   padding-top: 1px;
   margin-top: -1px;
   color: #35404A;

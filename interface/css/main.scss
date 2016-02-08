@@ -15,7 +15,7 @@ html,body {
     height:100%;
     margin:0;
     // stop pesky child elements from fiddling with layout.
-    overflow:auto;
+    overflow:hidden;
     padding-top:1px;
     margin-top:-1px;
     color:$color-text;
