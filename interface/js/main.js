@@ -3,8 +3,6 @@ $(document).ready(function() {
 
 });
     var editor = ace.edit("codeEditor");
-    editor.setTheme("ace/theme/solarized_dark");
-    editor.getSession().setMode("ace/mode/javascript");
 
 // Triggers on resize.
 $(window).resize(function() {
