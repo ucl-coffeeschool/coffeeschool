@@ -9,6 +9,7 @@ $(document).ready(function() {
 // Triggers on resize.
 $(window).resize(function() {
     resizeCanvas();
+    editor.resize();
 });
 
 var setMenuButtonIcon = function() {
