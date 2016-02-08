@@ -129,4 +129,7 @@ canvas#game-preview {
   background: #a1aebc;
   display: block; }
 
+#codeEditor * {
+  flex: none; }
+
 /*# sourceMappingURL=main.css.map */

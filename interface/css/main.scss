@@ -186,3 +186,7 @@ canvas#game-preview {
     background:darken($color-bg,20);
     display:block;
 }
+
+#codeEditor * {
+    flex:none;
+}
