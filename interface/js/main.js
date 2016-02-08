@@ -38,9 +38,12 @@ function resizeCanvas(){
     aspect = canvas.height/canvas.width,
     width = con.width(),
     height = con.height();
-    console.log('Resizing!');
-    canvas.width = width;
-    canvas.height = Math.round(width * aspect);
+    canvas.height = height;
+    canvas.width = Math.round(height / aspect);
+    if (canvas.width > width) {
+        canvas.width = width;
+        canvas.height = Math.round(width * aspect);
+    }
 }
 
 //Run the javascript
