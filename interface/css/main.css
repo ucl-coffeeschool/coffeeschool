@@ -50,8 +50,8 @@ nav {
     display: block;
     flex: 0 0 auto; }
     .main header em {
-      margin-left: 1rem;
-      color: rgba(220, 225, 230, 0.7); }
+      color: rgba(220, 225, 230, 0.7);
+      font-style: normal; }
     .main header * {
       display: inline-block;
       vertical-align: top;
