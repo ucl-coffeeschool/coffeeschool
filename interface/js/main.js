@@ -1,9 +1,10 @@
 $(document).ready(function() {
+    resizeCanvas();
+
+});
     var editor = ace.edit("codeEditor");
     editor.setTheme("ace/theme/cobalt");
     editor.getSession().setMode("ace/mode/javascript");
-    resizeCanvas();
-});
 
 // Triggers on resize.
 $(window).resize(function() {
@@ -41,3 +42,15 @@ function resizeCanvas(){
     canvas.width = width;
     canvas.height = Math.round(width * aspect);
 }
+
+//Run the javascript
+$('#code-compile').click(function() {
+	Crafty.init(500, 350, document.getElementById("game-container"));
+	eval(editor.getValue());
+});
+
+
+
+
+
+
