@@ -1,6 +1,7 @@
 var editor = ace.edit("codeEditor");
 
 $(document).ready(function() {
+    editor.getSession().setMode("ace/mode/javascript");
     resizeCanvas();
 });
 
