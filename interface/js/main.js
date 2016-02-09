@@ -5,6 +5,29 @@ $(document).ready(function() {
     resizeCanvas();
 });
 
+// check for syntax errors.
+editor.getSession().on("changeAnnotation", function() {
+    var annot = editor.getSession().getAnnotations();
+    var isError = false;
+
+    for (var key in annot) {
+        if (annot.hasOwnProperty(key)) {
+            if (annot[key].type === "error") {
+                isError = true;
+            }
+        }
+    }
+
+    if (isError) {
+        $('#code-compile').attr('enabled',false);
+        $('#syntax-msg').html('You have errors in your code!');
+    }
+    else {
+        $('#code-compile').attr('enabled',true);
+        $('#syntax-msg').html('');
+    }
+})
+
 // Triggers on resize.
 $(window).resize(function() {
     resizeCanvas();
