@@ -71,11 +71,16 @@ function resizeCanvas(){
 
 //Run the javascript
 $('#code-compile').click(function() {
+	loggerdiv.innerHTML = '';
 	Crafty.init(500, 350, document.getElementById("game-container"));
 	eval(editor.getValue());
 });
 
-
+//overide console.log
+var loggerdiv = document.getElementById("log-div");
+console.log = function (message) {
+	loggerdiv.innerHTML += message + '<br/>';
+};
 
 
 
