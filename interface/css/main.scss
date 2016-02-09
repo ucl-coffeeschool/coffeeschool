@@ -168,6 +168,11 @@ nav {
                  &:focus {
                      outline:none;
                  }
+                
+                &:disabled {
+                    color:grayscale($color-bg);
+                    background:grayscale($color-secondary);
+                } 
              }
              h1,h2,h3 {
                  flex:0 0 auto;
@@ -188,4 +193,10 @@ canvas#game-preview {
 
 #codeEditor * {
     flex:none;
+}
+
+#syntax-msg {
+    margin-left:0.25rem;
+    font-size:1rem;
+    color:rgba($color-text,0.5);
 }

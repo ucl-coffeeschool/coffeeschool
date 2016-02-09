@@ -19,11 +19,11 @@ editor.getSession().on("changeAnnotation", function() {
     }
 
     if (isError) {
-        $('#code-compile').attr('enabled',false);
+        $('#code-compile').prop('disabled',true);
         $('#syntax-msg').html('You have errors in your code!');
     }
     else {
-        $('#code-compile').attr('enabled',true);
+        $('#code-compile').prop('disabled',false);
         $('#syntax-msg').html('');
     }
 })

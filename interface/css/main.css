@@ -119,6 +119,9 @@ nav {
         background: #00172e; }
       .main .flex-container button:focus {
         outline: none; }
+      .main .flex-container button:disabled {
+        color: #e1e1e1;
+        background: #646464; }
     .main .flex-container h1, .main .flex-container h2, .main .flex-container h3 {
       flex: 0 0 auto; }
     .main .flex-container * {
@@ -130,5 +133,10 @@ canvas#game-preview {
 
 #codeEditor * {
   flex: none; }
+
+#syntax-msg {
+  margin-left: 0.25rem;
+  font-size: 1rem;
+  color: rgba(53, 64, 74, 0.5); }
 
 /*# sourceMappingURL=main.css.map */
