@@ -3,6 +3,7 @@ var playerSize = 20;
 var sceneWidth = 500, sceneHeight = 350, groundHeight = 30;
 var playAreaHeight = (sceneHeight - groundHeight);
 var g = 1.0;
+var objectWidth = 2 * playerSize; // Width of object is twice player size
 var score = 0;
 
 // Initialisation
@@ -63,6 +64,7 @@ Crafty.defineScene("GameOver", function() {
         .color("#00ff00");
 
 });
+
 
 // Game Scene
 
@@ -154,12 +156,9 @@ Crafty.defineScene("Game", function() {
                     });
 });
 
-// Reuseable functions
-
 // Function used to generate obstacles with "random" mid points
 function newObstacle()
 {
-    var objectWidth = 2 * playerSize; // Width of object is twice player size
     // Declare generated boundaries of objects
     var randomHeight = Math.floor((Math.random() * (sceneHeight/2)) + (sceneHeight/3));
     var bottomOfTopHalf = playAreaHeight - (randomHeight - playerSize);
@@ -181,3 +180,4 @@ function newObstacle()
             h: playAreaHeight - topOfBottomHalf})
         .color("#003319");
 };
+
