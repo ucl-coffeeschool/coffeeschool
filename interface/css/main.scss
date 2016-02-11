@@ -170,7 +170,7 @@ nav {
                  }
                 
                 &:disabled {
-                    color:grayscale($color-bg);
+                   color:grayscale($color-bg);
                     background:grayscale($color-secondary);
                 } 
              }

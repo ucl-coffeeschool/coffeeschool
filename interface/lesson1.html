@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Learn You A Code</title>
+        <title>Lesson 1 - Learn You A Code</title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link href="css/main.css" rel="stylesheet">
@@ -22,13 +22,13 @@
         <div class="main">
             <header>
                 <div id="menu-button"><i class="fa fa-bars"></i></div>
-                <h1>Learn You A Code <i class="fa fa-code"></i> <em>Lesson One</em></h1>
+                <h1>Learn You A Code <i class="fa fa-code"></i> <em>Lesson 1</em></h1>
             </header>
             <div class="container">
                 <div class="flex-container div-half">
                     <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span></h2>
 
-                    <div id="codeEditor"></div>
+                    <div id="codeEditor">//insert your code below!</div>
                 </div>
                 <div class="flex-container div-half">
                     <div class="flex-container">
@@ -39,9 +39,15 @@
                         <div class="div-content" id="log-div"> </div>
                         <h2>Lesson 1</h2>
                         <div class="div-content">
-                            <p>So, to create your first game, you simply type <pre>Crafty.init();</pre> Simple right? We thought so.</p>
-                            <p>In games, things like players, enemies, pickups are all represented using things called <strong>entities</strong>.</p>
-                            <p>How can we we add an entity? Simple, using the <code>Crafty.e()</code> function.</p>
+                            <h2 id="intro">Intro</h2>
+<p>This course is designed to teach you the basics of JavaScript (JS), which is the programming language which is most commonly used on the web to add interaction to HTML webpages. This course is based on learning coding, so lets jump in. </p>
+<p>In JavaScript we can do basic output via the console, by calling console.log(). <em>Try it now by writing <code>console.log(&quot;Hello World&quot;);</code></em> and clicking Update. If you can now see Hello World in the console log on the right of the page, you have started your journey in JS! Be sure to remember the closing semicolon ; on each line.</p>
+<h2 id="variables">Variables</h2>
+<p>In JS you store data in variables, eg
+<code>var hello = &quot;Hello World!&quot;;
+console.log(hello);</code></p>
+<p>We are using CraftyJS, which is a game framework for JavaScript, which means you can create games which will run on the web on any modern browser.</p>
+
                         </div>
                     </div>
                 </div>

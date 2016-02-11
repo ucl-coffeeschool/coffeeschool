@@ -1,0 +1,21 @@
+{
+  "name": "ccfiles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/uclfam/ccfiles.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "homepage": "https://bitbucket.org/uclfam/ccfiles#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-hbs": "^0.2.0",
+    "gulp-markdown-to-json": "^0.2.1"
+  }
+}
