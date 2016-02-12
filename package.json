@@ -15,6 +15,7 @@
   "homepage": "https://bitbucket.org/uclfam/ccfiles#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-extend": "^0.2.0",
     "gulp-hbs": "^0.2.0",
     "gulp-markdown-to-json": "^0.2.1"
   }

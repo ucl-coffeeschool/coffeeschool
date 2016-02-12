@@ -1,6 +1,5 @@
 ---
 lesson_no: 1
-start_code: "//insert your code below!"
 ---
 
 ## Intro
