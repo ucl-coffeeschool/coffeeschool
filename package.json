@@ -17,6 +17,7 @@
     "gulp": "^3.9.1",
     "gulp-extend": "^0.2.0",
     "gulp-hbs": "^0.2.0",
-    "gulp-markdown-to-json": "^0.2.1"
+    "gulp-markdown-to-json": "^0.2.1",
+    "gulp-ruby-sass": "^2.0.6"
   }
 }

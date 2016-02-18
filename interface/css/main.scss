@@ -6,6 +6,9 @@ $color-primary-dark:darken($color-primary,20);
 $color-secondary:#0063C7;
 $color-secondary-dark:darken($color-secondary,20);
 
+// fonts
+$font-mono:"Source Code Pro",Monaco,monospace;
+
 // measures
 $measure-header-height:3rem;
 $measure-nav-width:20rem;
@@ -184,11 +187,26 @@ nav {
      }
 
 #game-container {
+    min-width:300px;
+    min-height:150px;
 }
 
 canvas#game-preview {
     background:darken($color-bg,20);
     display:block;
+}
+
+#log-div {
+    border:2px solid darken($color-bg,20);
+    background-color:darken($color-bg,10);
+    font-family:$font-mono;
+    p {
+        padding:2px 5px;
+        margin:0;
+        &:nth-of-type(2n) {
+            background-color:darken($color-bg,5);
+        }
+    }
 }
 
 #codeEditor * {

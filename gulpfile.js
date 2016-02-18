@@ -3,6 +3,7 @@ var markdown = require('gulp-markdown-to-json');
 var hbs = require('gulp-hbs');
 var fs = require('fs');
 var extend = require('gulp-extend');
+var sass = require('gulp-ruby-sass');
 
 gulp.task('markdown', function() {
     gulp.src('./lessons/*.md')
@@ -42,6 +43,17 @@ gulp.task('handlebars', ['markdown', 'js'], function() {
     //})
 
     gulp.src(['lessons/*.json','!lessons/*.js.json'])
-        .pipe(hbs('./interface/template.hbs'))
+        .pipe(hbs('interface/template.hbs'))
         .pipe(gulp.dest('interface'));
 });
+
+gulp.task('sass', function() {
+    return sass('interface/css/main.scss')
+        .on('error', sass.logError)
+        .pipe(gulp.dest('interface/css'));
+})
+
+gulp.task('default', function() {
+    gulp.watch('interface/template.hbs', ['handlebars']);
+    gulp.watch('interface/css/*.scss', ['sass']);
+})

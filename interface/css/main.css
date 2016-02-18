@@ -127,9 +127,23 @@ nav {
     .main .flex-container * {
       align-self: stretch; }
 
+#game-container {
+  min-width: 300px;
+  min-height: 150px; }
+
 canvas#game-preview {
   background: #a1aebc;
   display: block; }
+
+#log-div {
+  border: 2px solid #a1aebc;
+  background-color: #bec8d1;
+  font-family: "Source Code Pro", Monaco, monospace; }
+  #log-div p {
+    padding: 2px 5px;
+    margin: 0; }
+    #log-div p:nth-of-type(2n) {
+      background-color: #cdd4db; }
 
 #codeEditor * {
   flex: none; }
@@ -138,5 +152,3 @@ canvas#game-preview {
   margin-left: 0.25rem;
   font-size: 1rem;
   color: rgba(53, 64, 74, 0.5); }
-
-/*# sourceMappingURL=main.css.map */

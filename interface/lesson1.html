@@ -36,7 +36,7 @@
                         <h2>Preview</h2>
                         <div class="div-content" id="game-container">
                         </div>
-                        <h4>Console Log:</h4>
+                        <h2>Console Log:</h2>
                         <div class="div-content" id="log-div"> </div>
                         <div class="div-content">
                             <h2 id="intro">Intro</h2>
@@ -56,10 +56,14 @@ You can store any data type as a <code>var</code>, such as strings or numbers.</
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-        <!-- Editor files (ace) -->
+        <!-- Editor (ace) -->
 
         <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
         <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+            ':35729/livereload.js?snipver=1"></' + 'script>')
+        </script>
     </body>
 </html>

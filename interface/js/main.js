@@ -72,14 +72,20 @@ function resizeCanvas(){
 //Run the javascript
 $('#code-compile').click(function() {
 	loggerdiv.innerHTML = '';
-	Crafty.init(500, 350, document.getElementById("game-container"));
+    $('#game-container').html("");
+	Crafty.init(300, 150, document.getElementById("game-container"));
 	eval(editor.getValue());
 });
 
 //overide console.log
 var loggerdiv = document.getElementById("log-div");
 console.log = function (message) {
-	loggerdiv.innerHTML += message + '<br/>';
+	loggerdiv.innerHTML += "<p>" + message + '</p>';
+    $('#log-div').children().each(function(ind) {
+        if ($(this).html() === "") {
+            $(this).remove();
+        }
+    })
 };
 
 
