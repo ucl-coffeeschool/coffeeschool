@@ -76,115 +76,115 @@ nav {
         display:block;
         flex:0 0 auto;
 
-            em {
-                color:rgba($color-bg,0.7);
-                font-style:normal;
+        em {
+            color:rgba($color-bg,0.7);
+            font-style:normal;
+        }
+
+        * {
+            display:inline-block;
+            vertical-align:top;
+            margin:0 0.5rem 0 0;
+            height:$measure-header-height;
+            line-height:$measure-header-height;
+            font-size:2rem;
+        }
+
+        #menu-button {
+            background:rgba($color-text,0.3);
+            transition:background 0.25s ease-in-out,
+            color 0.25s ease-in-out;
+            color:$color-bg;
+            width:$measure-header-height;
+            font-size:$measure-header-height;
+            text-align:center;
+            cursor:pointer;
+            i {
+                vertical-align:top;
+                margin:0;
             }
 
-             * {
-                 display:inline-block;
-                 vertical-align:top;
-                 margin:0 0.5rem 0 0;
-                 height:$measure-header-height;
-                 line-height:$measure-header-height;
-                 font-size:2rem;
-             }
+            &:hover {
+                background:$color-text;
+                color:$color-bg;
+            }
+        }
+    }
 
-             #menu-button {
-                 background:rgba($color-text,0.3);
-                 transition:background 0.25s ease-in-out,
-                 color 0.25s ease-in-out;
-                 color:$color-bg;
-                 width:$measure-header-height;
-                 font-size:$measure-header-height;
-                 text-align:center;
-                 cursor:pointer;
-                 i {
-                     vertical-align:top;
-                     margin:0;
-                 }
+    .container {
+        width:100%;
+        flex:1 1 auto;
+        display:flex;
+        flex-flow:row;
+    }
 
-                 &:hover {
-                     background:$color-text;
-                     color:$color-bg;
-                 }
-             }
-         }
+    .div-half {
+        padding:10px;
+        width:calc(50% - 20px);
+        flex:0 0 auto;
+        display:flex;
+    }
 
-         .container {
-             width:100%;
-             flex:1 1 auto;
-             display:flex;
-             flex-flow:row;
-         }
+    .div-content {
+        overflow-y:auto;
+        flex:1 1 auto;
+    }
 
-         .div-half {
-             padding:10px;
-             width:calc(50% - 20px);
-             flex:0 0 auto;
-             display:flex;
-         }
+    .flex-container {
+        margin:0;
+        display:flex;
+        min-width:0;
+        flex-flow:column;
+        align-items:stretch;
+        i > * {
+            height:0;
+        }
+        div {
+            flex:1 1 auto;
+        }
+        button {
+            display:inline;
+            font-size:1rem;
+            flex-shrink:0;
+            align-self:flex-end;
+            vertical-align:top;
+            background:$color-secondary;
+            color:$color-bg;
+            border:2px solid $color-secondary-dark;
+            border-width:1px 1px 3px 1px;
+            border-radius:3px;
+            bottom:0px;
+            position:relative;
+            transition:background 0.1s ease-in-out, border-width 0.1s ease-in-out;
 
-         .div-content {
-             overflow-y:auto;
-             flex:1 1 auto;
-         }
+            &:hover {
+                background:lighten($color-secondary,20);
+                border-width:1px 1px 4px 1px;
+                bottom:1px;
+            }
 
-         .flex-container {
-             margin:0;
-             display:flex;
-             min-width:0;
-             flex-flow:column;
-             align-items:stretch;
-             i > * {
-                 height:0;
-             }
-             div {
-                 flex:1 1 auto;
-             }
-             button {
-                 display:inline;
-                 font-size:1rem;
-                 flex-shrink:0;
-                 align-self:flex-end;
-                 vertical-align:top;
-                 background:$color-secondary;
-                 color:$color-bg;
-                 border:2px solid $color-secondary-dark;
-                 border-width:1px 1px 3px 1px;
-                 border-radius:3px;
-                 bottom:0px;
-                 position:relative;
-                 transition:background 0.1s ease-in-out, border-width 0.1s ease-in-out;
+            &:active {
+                border-width:4px 1px 1px 1px;
+                background:darken($color-secondary-dark,10);
+            }
 
-                 &:hover {
-                     background:lighten($color-secondary,20);
-                     border-width:1px 1px 4px 1px;
-                     bottom:1px;
-                 }
+            &:focus {
+                outline:none;
+            }
 
-                 &:active {
-                     border-width:4px 1px 1px 1px;
-                     background:darken($color-secondary-dark,10);
-                 }
-
-                 &:focus {
-                     outline:none;
-                 }
-                
-                &:disabled {
-                   color:grayscale($color-bg);
-                    background:grayscale($color-secondary);
-                } 
-             }
-             h1,h2,h3 {
-                 flex:0 0 auto;
-             }
-             * {
-                 align-self:stretch;
-             }
-         }
-     }
+            &:disabled {
+                color:grayscale($color-bg);
+                background:grayscale($color-secondary);
+            } 
+        }
+        h1,h2,h3 {
+            flex:0 0 auto;
+        }
+        * {
+            align-self:stretch;
+        }
+    }
+}
 
 #game-container {
     min-width:300px;

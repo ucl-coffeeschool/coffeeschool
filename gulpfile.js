@@ -22,37 +22,35 @@ gulp.task('js', function() {
                 var jsonFile = fs.readFileSync("./lessons/lesson"+file.match(/\d+/)+".json",'utf8');
                 var json = JSON.parse(jsonFile);
                 json.start_code = js;
-                //fs.appendFileSync("./lessons/"+file.match(/lesson(\d)+/)+".json",',{"start_code": "'+escape(s)+'"}');
                 fs.writeFileSync("./lessons/lesson"+file.match(/\d+/)+".json",JSON.stringify(json),"utf8");
             }
         });
     });
 });
 
+/**
+ * This task compiles the lesson files into static html pages.
+ **/
 gulp.task('handlebars', ['markdown', 'js'], function() {
-    //fs.readdir('./lessons',function(err,files) {
-    //    files.forEach(function(file,i,arr) {
-    //        if (file.match(/lesson(\d)+\.json$/)) {
-    //            var i = file.match(/(\d)+/);
-    //            gulp.src(['./lessons/lesson'+i+'.json','./lessons/lesson'+i+'.js.json'])
-    //                .pipe(extend('./lessons/lesson'+i+'.json'))
-    //                .pipe(hbs('./interface/template.hbs'))
-    //                .pipe(gulp.dest('./interface'));
-    //        }
-    //    });
-    //})
-
     gulp.src(['lessons/*.json','!lessons/*.js.json'])
         .pipe(hbs('interface/template.hbs'))
         .pipe(gulp.dest('interface'));
 });
 
+
+/**
+ * This tasks precompiles the Sass stylesheet into a CSS file.
+ **/
 gulp.task('sass', function() {
     return sass('interface/css/main.scss')
         .on('error', sass.logError)
         .pipe(gulp.dest('interface/css'));
 })
 
+
+/**
+ * Default task. Will watch the handlebars template and the scss file for changes and run tasks above as needed.
+ **/
 gulp.task('default', function() {
     gulp.watch('interface/template.hbs', ['handlebars']);
     gulp.watch('interface/css/*.scss', ['sass']);
