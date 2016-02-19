@@ -1,5 +1,7 @@
 var editor = ace.edit("codeEditor");
 
+var consoleOut = [];
+
 $(document).ready(function() {
     editor.getSession().setMode("ace/mode/javascript");
     resizeCanvas();
@@ -69,23 +71,58 @@ function resizeCanvas(){
     }
 }
 
+var nextLesson = function() {
+    var currLesson = location.href.match(/lesson\d+/)[0].match(/\d+/);
+    location = 'lesson'+(parseInt(currLesson)+1)+".html";
+}
+
 //Run the javascript
 $('#code-compile').click(function() {
 	loggerdiv.innerHTML = '';
     $('#game-container').html("");
+    consoleOut = [];
 	Crafty.init(300, 150, document.getElementById("game-container"));
 	eval(editor.getValue());
+    
+    $('#nextLesson').addClass('lessonComplete');
+    $('#nextLesson i').removeClass('fa-arrow-right').addClass('fa-spin fa-spinner');
+    $('#nextLesson').onClick(nextLesson());
+    $('#nextLesson').prop('disabled',true);
+
+    setTimeout(function() {
+        switch (codeTest()) {
+            case "true":
+                $('#nextLesson i').removeClass('fa-spin fa-spinner').addClass('fa-arrow-right');
+                $('#nextLesson').prop('disabled',false);
+                break;
+            case "notest":
+                $('#nextLesson i').removeClass('fa-spin fa-spinner').addClass('fa-arrow-right');
+                $('#nextLesson').prop('disabled',false);
+                break;
+            case "false":
+                $('#nextLesson').removeClass('lessonComplete');
+                break;
+        }
+    }, 2000);
 });
+
+//overlay stuff
+$('.overlay').click(function() {
+    $('.overlay').fadeOut(500);
+})
 
 //overide console.log
 var loggerdiv = document.getElementById("log-div");
 console.log = function (message) {
 	loggerdiv.innerHTML += "<p>" + message + '</p>';
+    if (message !== "") {
+        consoleOut.push(message);
+    }
     $('#log-div').children().each(function(ind) {
         if ($(this).html() === "") {
             $(this).remove();
         }
-    })
+    });
 };
 
 

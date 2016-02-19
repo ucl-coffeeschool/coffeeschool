@@ -19,10 +19,20 @@ gulp.task('js', function() {
         files.forEach( function (file,i,arr) {
             if(file.match(/lesson(\d)+\.js$/)) {
                 var js = fs.readFileSync('./lessons/' + file,'utf8');
-                var jsonFile = fs.readFileSync("./lessons/lesson"+file.match(/\d+/)+".json",'utf8');
+                var id = file.match(/\d+/);
+                var jstest = "";
+                // load tester code.
+                try {
+                    jstest = fs.readFileSync('./lessons/lesson'+id+'.test.js','utf8');
+                }
+                catch (err) {
+                    jstest = fs.readFileSync('./interface/js/notestcode.js', 'utf8');
+                }
+                var jsonFile = fs.readFileSync("./lessons/lesson"+id+".json",'utf8');
                 var json = JSON.parse(jsonFile);
                 json.start_code = js;
-                fs.writeFileSync("./lessons/lesson"+file.match(/\d+/)+".json",JSON.stringify(json),"utf8");
+                json.test_code = jstest;
+                fs.writeFileSync("./lessons/lesson"+id+".json",JSON.stringify(json),"utf8");
             }
         });
     });
