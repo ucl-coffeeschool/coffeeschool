@@ -2,6 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
   overflow: hidden;
+  overflow: hidden;
   padding-top: 1px;
   margin-top: -1px;
   color: #35404A;
@@ -211,7 +212,9 @@ canvas#game-preview {
 #log-div {
   border: 2px solid #a1aebc;
   background-color: #bec8d1;
-  font-family: "Source Code Pro", Monaco, monospace; }
+  font-family: "Source Code Pro", Monaco, monospace;
+  min-height: 2rem;
+  max-height: 10rem; }
   #log-div p {
     padding: 2px 5px;
     margin: 0; }

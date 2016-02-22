@@ -106,7 +106,7 @@ $('#code-compile').click(function() {
                 $('.nagbar').slideDown(500);
                 break;
         }
-    }, 2000);
+    }, 500);
 });
 
 //overlay stuff
@@ -129,5 +129,5 @@ console.log = function (message) {
 };
 
 $('.nagbar .fa-close').click(function() {
-    $('.nagbar').slideUp(500);
+    $(this).parent().slideUp(500);
 })
