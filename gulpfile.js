@@ -5,6 +5,19 @@ var fs = require('fs');
 var extend = require('gulp-extend');
 var sass = require('gulp-ruby-sass');
 
+hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
+    lvalue = parseFloat(lvalue);
+    rvalue = parseFloat(rvalue);
+        
+    return {
+        "+": lvalue + rvalue,
+        "-": lvalue - rvalue,
+        "*": lvalue * rvalue,
+        "/": lvalue / rvalue,
+        "%": lvalue % rvalue
+    }[operator];
+});
+
 gulp.task('markdown', function() {
     gulp.src('./lessons/*.md')
         .pipe(markdown({

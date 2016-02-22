@@ -15,3 +15,8 @@ In JS you store data in variables, eg
 console.log(hello);`
 You can store any data type as a `var`, such as strings or numbers.
 
+```javascript
+var myFunc = function() {
+    console.log("yolo");
+};
+```

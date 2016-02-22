@@ -86,14 +86,16 @@ $('#code-compile').click(function() {
     
     $('#nextLesson').addClass('lessonComplete');
     $('#nextLesson i').removeClass('fa-arrow-right').addClass('fa-spin fa-spinner');
-    $('#nextLesson').onClick(nextLesson());
+    //$('#nextLesson').onClick(nextLesson());
     $('#nextLesson').prop('disabled',true);
+    $('.nagbar').slideUp(500);
 
     setTimeout(function() {
         switch (codeTest()) {
             case "true":
                 $('#nextLesson i').removeClass('fa-spin fa-spinner').addClass('fa-arrow-right');
                 $('#nextLesson').prop('disabled',false);
+                $('.overlay').fadeIn(200);
                 break;
             case "notest":
                 $('#nextLesson i').removeClass('fa-spin fa-spinner').addClass('fa-arrow-right');
@@ -101,6 +103,7 @@ $('#code-compile').click(function() {
                 break;
             case "false":
                 $('#nextLesson').removeClass('lessonComplete');
+                $('.nagbar').slideDown(500);
                 break;
         }
     }, 2000);
@@ -125,6 +128,6 @@ console.log = function (message) {
     });
 };
 
-
-
-
+$('.nagbar .fa-close').click(function() {
+    $('.nagbar').slideUp(500);
+})

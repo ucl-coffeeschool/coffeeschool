@@ -18,8 +18,17 @@
             <a href="#">About</a>
         </nav>
 
+        <div class="nagbar" style="display:none">
+            <p>Your code doesn't seem to do what we're looking for. Check it and try again!</p>
+            <i class="fa fa-close"></i>
+        </div>
+
         <!-- Main content. -->
-        <div class="overlay">
+        <div class="overlay" style="display:none">
+            <span class="closeButton"><i class="fa fa-close"></i></span>
+            <h1>Lesson completed!</h1>
+            <h2>Give yourself a pat on the back.</h2>
+            <a href="lesson2.html">Next lesson!</a>
         </div>
         <div class="main">
             <header>
@@ -28,7 +37,7 @@
             </header>
             <div class="container">
                 <div class="flex-container div-half">
-                    <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span><button id="nextLesson"><i class="fa fa-arrow-right"></i> Next Lesson</button></h2>
+                    <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span><button id="nextLesson" onClick="nextLesson()"><i class="fa fa-arrow-right"></i> Next Lesson</button></h2>
 
                     <div id="codeEditor">// Add your code below, dork!
 </div>
@@ -49,6 +58,10 @@
 <code>var hello = &quot;Hello World!&quot;;
 console.log(hello);</code>
 You can store any data type as a <code>var</code>, such as strings or numbers.</p>
+<pre><code class="lang-javascript">var myFunc = function() {
+    console.log(&quot;yolo&quot;);
+};
+</code></pre>
 
                         </div>
                     </div>
