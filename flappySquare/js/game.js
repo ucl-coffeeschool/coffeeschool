@@ -1,8 +1,8 @@
 // Global/Environment Variables
-var playerSize = 20;
-var sceneWidth = 500, sceneHeight = 350, groundHeight = 30;
+var playerSize = 5;
+var sceneWidth = 300, sceneHeight = 150, groundHeight = 10;
 var playAreaHeight = (sceneHeight - groundHeight);
-var g = 1.0;
+var g = 0.5;
 var objectWidth = 2 * playerSize; // Width of object is twice player size
 var score = 0;
 
