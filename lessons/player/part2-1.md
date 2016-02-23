@@ -1,4 +1,5 @@
-## Creating the Player, Part 2
+## Part 2: Creating the Player's Movement System  
+*Time estimate for this part: 10 minutes*
 
 Now that we've drawn the player we'll want to think about giving the player movement. In Flappy Bird style games there are generally only **two** types of movement by the player:
 

@@ -1,4 +1,6 @@
-### Goal: Drawing the Player
+## Part 1: Drawing the Player
+*Time estimate for Part 1: 5 minutes*
+### Goal: Draw the Player's avatar
 
 To create the base entity for our player we use the following code:
 
