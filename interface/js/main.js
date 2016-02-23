@@ -1,4 +1,5 @@
 var editor = ace.edit("codeEditor");
+editor.setTheme('ace/theme/monokai');
 
 var consoleOut = [];
 
