@@ -37,6 +37,6 @@ Now that we have the player's velocity being affected due to gravity we want to 
 this.y += playerVel; 
 ```
 
-With both of these statements within the "EnterFrame" events function, our player will now fall due to gravity like behaviour. *Try running it. What happens to the player?*
+With both of these statements within the "EnterFrame" events function, our player will now fall due to gravity like behaviour. *Try running it. What happens to the player? Do they stop? Do they continue falling?*
 
 
