@@ -5,3 +5,4 @@ node_modules
 .sass-cache/*
 nohup*
 **/*.swp
+tmp/**/*.json

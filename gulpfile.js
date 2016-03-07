@@ -25,24 +25,37 @@ hbs.registerHelper("math", function (lvalue, operator, rvalue, options) {
     }[operator];
 });
 
-// gulp.task('markdown', function() {
-//     gulp.src('./lessons/*.md')
-//         .pipe(markdown({
-//             pedantic: true,
-//             smartypants: true
-//         }))
-//         .pipe(gulp.dest('./lessons'));
-// });
-//
+gulp.task('markdown', function () {
+    gulp.src('./lessons/**/*.md')
+        .pipe(markdown({
+            pedantic: true,
+            smartypants: true
+        }))
+        .pipe(gulp.dest('./lessons'));
+});
+
 function genLessonJson(lesson, filepath, outname) {
     var js = "";
     try {
         var jspath = path.join(filepath, lesson.name + '.js');
         js = fs.readFileSync(jspath, 'utf8');
-    }
-    catch (err) {
+    } catch (err) {
         console.log(lesson.name + " has no starter code.");
     }
+
+    // load text.
+    var body = {};
+    try {
+        var bodypath = path.join(filepath, lesson.name + '.json');
+        body = JSON.parse(fs.readFileSync(bodypath, 'utf8'));
+    }
+    catch (err) {
+        body = {
+            "title": lesson.name,
+            "body": ""
+        };
+    }
+
     // load tester code.
     try {
         jstest = fs.readFileSync(path.join(filepath, lesson.name + '.test.js'), 'utf8');
@@ -51,21 +64,25 @@ function genLessonJson(lesson, filepath, outname) {
     }
     lesson.start_code = js;
     lesson.test_code = jstest;
-    fs.writeFileSync(path.join(__dirname, 'dist', outname + '.json'), JSON.stringify(lesson), "utf8");
+    lesson.title = body.title;
+    lesson.body = body.body;
+    fs.writeFileSync(path.join(__dirname, 'tmp', outname + '.json'), JSON.stringify(lesson), "utf8");
+
 }
-//
-// /**
-//  * This task compiles the lesson files into static html pages.
-//  **/
-// gulp.task('handlebars', ['markdown', 'js'], function() {
-//     gulp.src(['lessons/*.json', '!lessons/*.js.json'])
-//         .pipe(hbs('interface/template.hbs'))
-//         .pipe(gulp.dest('interface'));
-// });
+
+/**
+ * This task compiles the lesson files into static html pages.
+ **/
+gulp.task('handlebars', ['markdown', 'compileLessons'], function() {
+    gulp.src(['tmp/*.json', '!lessons/*.js.json'])
+        .pipe(hbs('src/template.hbs'))
+        .pipe(gulp.dest('dist'));
+});
 
 
 gulp.task('compileLessons', function () {
     var dirs = findDirs(path.resolve(__dirname, 'lessons'));
+
     dirs.forEach(function (dir) {
         var fullpath = path.join(__dirname, 'lessons', dir);
         if (fs.statSync(path.join(fullpath, 'section.json'))) {
@@ -73,9 +90,12 @@ gulp.task('compileLessons', function () {
             var sectionJson = JSON.parse(fs.readFileSync(path.join(fullpath, 'section.json')));
             // should we ignore it?
             if (sectionJson.hasOwnProperty('ignore') ? !sectionJson.ignore : true) {
-                sectionJson.lessons.forEach(function (lesson) {
-                    name = "section-" + dir + "-lesson-" + lesson.name;
-
+                // Dear Javascript gods.
+                // For what I am about to commit,
+                // I apologise. Love from Matt.
+                var lastLesson = {};
+                sectionJson.lessons.reverse().forEach(function (lesson) {
+                    var name = "section-" + dir + "-lesson-" + lesson.name;
                     genLessonJson(lesson, fullpath, name);
                 });
             }

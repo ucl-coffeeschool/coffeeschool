@@ -1,1 +1,0 @@
-{"name":"part2-2","start_code":"","test_code":"$(document).ready(function() {\n    $('#nextLesson').addClass(\"lessonComplete\");\n});\n\nvar codeTest = function() {\n    return \"notest\";\n}\n"}
