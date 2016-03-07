@@ -6,3 +6,5 @@ node_modules
 nohup*
 **/*.swp
 tmp/**/*.json
+lessons/**/*.json
+!lessons/**/section.json

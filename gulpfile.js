@@ -34,7 +34,7 @@ gulp.task('markdown', function () {
         .pipe(gulp.dest('./lessons'));
 });
 
-function genLessonJson(lesson, filepath, outname) {
+function genLessonJson(lesson, filepath, outname, last) {
     var js = "";
     try {
         var jspath = path.join(filepath, lesson.name + '.js');
@@ -66,6 +66,9 @@ function genLessonJson(lesson, filepath, outname) {
     lesson.test_code = jstest;
     lesson.title = body.title;
     lesson.body = body.body;
+    if (last !== "") {
+        lesson.nextLesson = last;
+    }
     fs.writeFileSync(path.join(__dirname, 'tmp', outname + '.json'), JSON.stringify(lesson), "utf8");
 
 }
@@ -83,7 +86,7 @@ gulp.task('handlebars', ['markdown', 'compileLessons'], function() {
 gulp.task('compileLessons', function () {
     var dirs = findDirs(path.resolve(__dirname, 'lessons'));
 
-    dirs.forEach(function (dir) {
+    dirs.reverse().forEach(function (dir) {
         var fullpath = path.join(__dirname, 'lessons', dir);
         if (fs.statSync(path.join(fullpath, 'section.json'))) {
             // get the json file.
@@ -93,10 +96,11 @@ gulp.task('compileLessons', function () {
                 // Dear Javascript gods.
                 // For what I am about to commit,
                 // I apologise. Love from Matt.
-                var lastLesson = {};
+                var lastLesson = "";
                 sectionJson.lessons.reverse().forEach(function (lesson) {
                     var name = "section-" + dir + "-lesson-" + lesson.name;
-                    genLessonJson(lesson, fullpath, name);
+                    genLessonJson(lesson, fullpath, name, lastLesson);
+                    lastLesson = name;
                 });
             }
         }
