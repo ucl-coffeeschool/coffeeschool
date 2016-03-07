@@ -1,5 +1,6 @@
 {
     "name": "Player",
+    "nameNice": "Player",
     "shortDescription": "In this tutorial you will learn how to make a player and control it.",
     "lessons": [
         {

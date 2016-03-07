@@ -1,0 +1,11 @@
+{
+    "name": "Example",
+    "nameNice": "Example Section",
+    "descriptionShort": "This is a test section.json for you to use.",
+    "description": "Some longer description, so write as much as you need here.",
+    "lessons": [{
+        "name": "lesson1",
+        "nameNice": "Welcome!",
+        "description": "Write your first Javascript function"
+    }]
+}

@@ -1,5 +1,6 @@
 {
     "name": "Objects",
+    "nameNice": "Using Objects",
     "lessons": [
         {
             "name": "part1-1"

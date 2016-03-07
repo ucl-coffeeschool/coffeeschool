@@ -27,12 +27,8 @@ hbs.registerHelper("math", function (lvalue, operator, rvalue, options) {
     }[operator];
 });
 
-hbs.registerHelper("ifEq", function (left, right, block) {
-    if (left ? (right ? left === right : false) : false) {
-        return block();
-    } else {
-        return block.inverse();
-    }
+hbs.registerHelper('ifEq', function(a, b, block) {
+    return a == b ? block.fn() : block.inverse();
 });
 
 gulp.task('markdown', function () {
@@ -103,6 +99,7 @@ gulp.task('handlebars', ['markdown', 'compileLessons'], function () {
         var sectionJson = JSON.parse(fs.readFileSync(sectionPath));
         sectionData.sections.push({
             "name": sectionJson.name,
+            "nameNice": sectionJson.nameNice,
             "description": sectionJson.shortDescription ? sectionJson.shortDescription : "No description available.",
             "noLessons": sectionJson.lessons.length
         });
