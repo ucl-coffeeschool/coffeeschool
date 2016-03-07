@@ -5,6 +5,8 @@ var fs = require('fs');
 var path = require('path');
 var extend = require('gulp-extend');
 var sass = require('gulp-ruby-sass');
+var handlebars = require('handlebars');
+var rename = require('gulp-rename');
 
 function findDirs(dirpath) {
     return fs.readdirSync(dirpath).filter(function (file) {
@@ -25,6 +27,14 @@ hbs.registerHelper("math", function (lvalue, operator, rvalue, options) {
     }[operator];
 });
 
+hbs.registerHelper("ifEq", function (left, right, block) {
+    if (left ? (right ? left === right : false) : false) {
+        return block();
+    } else {
+        return block.inverse();
+    }
+});
+
 gulp.task('markdown', function () {
     gulp.src('./lessons/**/*.md')
         .pipe(markdown({
@@ -34,7 +44,7 @@ gulp.task('markdown', function () {
         .pipe(gulp.dest('./lessons'));
 });
 
-function genLessonJson(lesson, filepath, outname, last) {
+function genLessonJson(index, lesson, filepath, outname, last) {
     var js = "";
     try {
         var jspath = path.join(filepath, lesson.name + '.js');
@@ -48,8 +58,7 @@ function genLessonJson(lesson, filepath, outname, last) {
     try {
         var bodypath = path.join(filepath, lesson.name + '.json');
         body = JSON.parse(fs.readFileSync(bodypath, 'utf8'));
-    }
-    catch (err) {
+    } catch (err) {
         body = {
             "title": lesson.name,
             "body": ""
@@ -66,6 +75,7 @@ function genLessonJson(lesson, filepath, outname, last) {
     lesson.test_code = jstest;
     lesson.title = body.title;
     lesson.body = body.body;
+    lesson.lesson_no = index;
     if (last !== "") {
         lesson.nextLesson = last;
     }
@@ -76,9 +86,35 @@ function genLessonJson(lesson, filepath, outname, last) {
 /**
  * This task compiles the lesson files into static html pages.
  **/
-gulp.task('handlebars', ['markdown', 'compileLessons'], function() {
-    gulp.src(['tmp/*.json', '!lessons/*.js.json'])
+gulp.task('handlebars', ['markdown', 'compileLessons'], function () {
+    var nav = handlebars.compile(fs.readFileSync(path.join(__dirname, "src", "partials", "nav.hbs"), "utf8"));
+    hbs.registerPartial("nav", nav);
+    gulp.src(['tmp/section-*-lesson-*.json', '!tmp/section.json'])
         .pipe(hbs('src/template.hbs'))
+        .pipe(gulp.dest('dist'));
+
+    // sectionS view.
+    var sections = findDirs(path.resolve(__dirname, 'lessons'));
+    var sectionData = {
+        sections: []
+    };
+    sections.forEach(function (section) {
+        var sectionPath = path.join(__dirname, 'lessons', section, 'section.json');
+        var sectionJson = JSON.parse(fs.readFileSync(sectionPath));
+        sectionData.sections.push({
+            "name": sectionJson.name,
+            "description": sectionJson.shortDescription ? sectionJson.shortDescription : "No description available.",
+            "noLessons": sectionJson.lessons.length
+        });
+
+        gulp.src(sectionPath)
+            .pipe(hbs('src/section.hbs'))
+            .pipe(rename('section-' + sectionJson.name + '.html'))
+            .pipe(gulp.dest('dist'));
+    });
+    fs.writeFileSync(path.join(__dirname, 'tmp', 'sections.json'), JSON.stringify(sectionData), "utf8");
+    gulp.src('tmp/sections.json')
+        .pipe(hbs('src/sections.hbs'))
         .pipe(gulp.dest('dist'));
 });
 
@@ -97,9 +133,9 @@ gulp.task('compileLessons', function () {
                 // For what I am about to commit,
                 // I apologise. Love from Matt.
                 var lastLesson = "";
-                sectionJson.lessons.reverse().forEach(function (lesson) {
-                    var name = "section-" + dir + "-lesson-" + lesson.name;
-                    genLessonJson(lesson, fullpath, name, lastLesson);
+                sectionJson.lessons.reverse().forEach(function (lesson, index, array) {
+                    var name = "section-" + sectionJson.name + "-lesson-" + lesson.name;
+                    genLessonJson(array.length - index, lesson, fullpath, name, lastLesson);
                     lastLesson = name;
                 });
             }

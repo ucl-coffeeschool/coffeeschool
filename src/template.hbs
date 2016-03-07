@@ -14,11 +14,7 @@
     </head>
     <body>
         <!-- nav stuff. -->
-        <nav>
-            <a href="#">Home</a>
-            <a href="#" class="active">Learn</a>
-            <a href="#">About</a>
-        </nav>
+        {{> nav}}
 
         <div class="nagbar" style="display:none">
             <p>Your code doesn't seem to do what we're looking for. Check it and try again!</p>
@@ -39,7 +35,9 @@
             </header>
             <div class="container">
                 <div class="flex-container div-half">
-                    <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span><button id="nextLesson" onClick="nextLesson()"><i class="fa fa-arrow-right"></i> Next Lesson</button></h2>
+                    <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span>
+                        {{#if nextLesson}}<button id="nextLesson" onClick="window.location = '{{nextLesson}}.html'"><i class="fa fa-arrow-right"></i> Next Lesson</button>
+                        {{else}}<button onClick="window.location 'sections.html'"><i class="fa fa-home"></i> Sections</button>{{/if}}</h2>
 
                     <div id="codeEditor">{{start_code}}</div>
                 </div>

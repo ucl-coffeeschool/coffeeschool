@@ -1,8 +1,11 @@
 {
     "name": "Player",
+    "shortDescription": "In this tutorial you will learn how to make a player and control it.",
     "lessons": [
         {
-            "name": "part1-1"
+            "name": "part1-1",
+            "nameNice": "Create the player!",
+            "description": "Create the player entity."
         },
         {
             "name": "part1-2"
