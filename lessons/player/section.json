@@ -1,0 +1,26 @@
+{
+    "name": "Player",
+    "lessons": [
+        {
+            "name": "part1-1"
+        },
+        {
+            "name": "part1-2"
+        },
+        {
+            "name": "part2-1"
+        },
+        {
+            "name": "part2-2"
+        },
+        {
+            "name": "part2-3"
+        },
+        {
+            "name": "part2-4"
+        },
+        {
+            "name": "part2-5"
+        }
+    ]
+}
