@@ -3,3 +3,8 @@ node_modules
 *~
 .sass-cache
 .sass-cache/*
+nohup*
+**/*.swp
+tmp/**/*.json
+lessons/**/*.json
+!lessons/**/section.json
