@@ -31,6 +31,7 @@ nav {
     left:-$measure-nav-width;
     width:$measure-nav-width;
     height:100%;
+    overflow-y: auto;
     top:0;
     background:$color-primary-dark;
     transition:left 0.25s ease-in-out;
@@ -177,7 +178,7 @@ nav {
             &:disabled {
                 color:grayscale($color-bg);
                 background:grayscale($color-secondary);
-            } 
+            }
         }
         h1,h2,h3 {
             flex:0 0 auto;

@@ -19,5 +19,8 @@
     "gulp-hbs": "^0.2.0",
     "gulp-markdown-to-json": "^0.2.1",
     "gulp-ruby-sass": "^2.0.6"
+  },
+  "dependencies": {
+    "gulp-rename": "^1.2.2"
   }
 }
