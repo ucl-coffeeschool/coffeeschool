@@ -1,12 +1,16 @@
 {
-    "name": "Objects",
-    "nameNice": "Using Objects",
-    "lessons": [
-        {
-            "name": "part1-1"
-        },
-        {
-            "name": "part1-2"
-        }
-    ]
+    "name": "Environment and Obstacles",
+    "nameNice": "Creating the Environment and the Obstacles",
+    "descriptionShort": "Description",
+    "description": "This section looks at creating the environment for the game, making the player interact with it and programmatically creating the obstacles the player must pass through.",
+    "lessons": [{
+        "name": "part1-1",
+        "nameNice": "Introduction",
+        "description": "Outlining how we will go about working through this section."
+    },
+    {
+        "name": "part1-2",
+        "nameNice": "Creating the Ground",
+        "description": "Drawing the ground, using variables to determine its dimensions."
+    }]
 }

@@ -100,7 +100,7 @@ gulp.task('handlebars', ['markdown', 'compileLessons'], function () {
         sectionData.sections.push({
             "name": sectionJson.name,
             "nameNice": sectionJson.nameNice,
-            "description": sectionJson.shortDescription ? sectionJson.shortDescription : "No description available.",
+            "description": sectionJson.descriptionShort ? sectionJson.descriptionShort : "No description available.",
             "noLessons": sectionJson.lessons.length
         });
 
