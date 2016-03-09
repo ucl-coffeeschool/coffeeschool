@@ -9,4 +9,9 @@ Crafty.e("2D, DOM, Color") // Specifying the components to add
     .bind("EnterFrame", function() { // Binds the "EnterFrame" event to the entity
         playerVel += g; // Adds the "gravitational acceleration" to the player's velocity 
         this.y += playerVel; // Change the player entities y position based on the player velocity
+    })
+    .bind("KeyDown", function(event) { // Binds the "KeyDown" event to our player entity
+        if(event.key == Crafty.keys.SPACE){ // If the key is the spacebar then "flap" 
+            playerVel = -5; // Sets the player's speed and direction to go upwards     
+        }
     });

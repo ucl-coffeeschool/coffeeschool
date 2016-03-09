@@ -37,5 +37,10 @@
             "name": "part2-5",
             "nameNice": "Letting the Player \"flap\"",
             "description": "In this lesson you'll introduce keyboard interaction and allow the player to affect the game"
+        },
+        {
+            "name": "part3",
+            "nameNice": "Refactoring!",
+            "description": "Here you'll modify some existing code and learn a little about refactoring" 
         }]
 }
