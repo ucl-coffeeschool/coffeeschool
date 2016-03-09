@@ -1,0 +1,41 @@
+{
+    "name": "The Player",
+    "nameNice": "Creating the Player",
+    "descriptionShort": "In this section we create the player and its basic mechanics.",
+    "description": "In this section you will be introduced to Crafty JS, creating our base player and making it be able to jump and be affected by a form of gravity.",
+    "lessons": [{
+            "name": "part1-1",
+            "nameNice": "Introduction to Crafty",
+            "description": "Here we introduce you to Crafty JS and entities"
+        },
+        {
+            "name": "part1-2",
+            "nameNice": "Drawing the Player", 
+            "description": "In this lesson you will draw the player's avatar using an entity" 
+        },
+        {
+            "name": "part2-1",
+            "nameNice": "Creating the Player's Movement System",
+            "description": "Here we consider the types of movement that a player will undergo in our game"
+        },
+        {
+            "name": "part2-2",
+            "nameNice": "Keeping Track of the Players Motion",
+            "description": "You will set up some variables which will keep track of and affect player movement"
+        },
+        {
+            "name": "part2-3",
+            "nameNice": "Introduction to Game Loops",
+            "description": "This section introduces you to game loops within games engines and frameworks, as well as Craftys own version"
+        },
+        {
+            "name": "part2-4",
+            "nameNice": "Updating the Player's Position and Velocity",
+            "description": "Here you will use the game loop to make a gravitational force act on your player and then move the player based on their speed"
+        },
+        {
+            "name": "part2-5",
+            "nameNice": "Letting the Player \"flap\"",
+            "description": "In this lesson you'll introduce keyboard interaction and allow the player to affect the game"
+        }]
+}
