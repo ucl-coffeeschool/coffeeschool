@@ -115,6 +115,10 @@ nav {
     }
 
     .container {
+        &.noflex {
+            display:block;
+        }
+
         width:100%;
         flex:1 1 auto;
         display:flex;
