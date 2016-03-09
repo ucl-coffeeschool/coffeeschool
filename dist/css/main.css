@@ -80,6 +80,8 @@ nav {
     flex: 1 1 auto;
     display: flex;
     flex-flow: row; }
+    .main .container.noflex {
+      display: block; }
   .main .div-half {
     padding: 10px;
     width: calc(50% - 20px);
