@@ -63,7 +63,7 @@ if ($('#codeEditor').length) {
     //Run the javascript
     $('#code-compile').click(function () {
         loggerdiv.innerHTML = '';
-        Crafty.stop();
+        Crafty.stop(true);
         consoleOut = [];
         Crafty.init(300, 150, document.getElementById("game-container"));
         eval(editor.getValue());
