@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Lesson 8 - Learn You A Code</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    <script src="js/prism.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <!-- nav stuff. -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sections.html" class="active">Sections</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="nagbar" style="display:none">
+        <p>Your code doesn't seem to do what we're looking for. Check it and try again!</p>
+        <i class="fa fa-close"></i>
+    </div>
+
+    <!-- Main content. -->
+    <div class="overlay" style="display:none">
+        <span class="closeButton"><i class="fa fa-close"></i></span>
+            <h1>Section cleared!</h1>
+            <h2>You're a rockstar. Nice one you.</h2>
+            <a href="sections.html">View Sections</a>
+    </div>
+    <div class="main">
+        <header>
+            <div id="menu-button"><i class="fa fa-bars"></i></div>
+            <h1>Learn You A Code <i class="fa fa-code"></i><em>Lesson 8</em></h1>
+        </header>
+        <div class="container">
+            <div class="flex-container div-half">
+                <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span>
+                        <button onClick="window.location = 'sections.html'"><i class="fa fa-home"></i> Sections</button></h2>
+
+                <div id="codeEditor">// Create the variables to track player movement 
+var playerVel = 0; // Stores the player&#x27;s velocity
+var g = 0.5;       // The constant acceleration cause by &quot;gravity&quot;
+
+// Create our player&#x27;s base entity
+Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
+    .attr({x: 30, y: 30, w: 15, h: 15}) // Specifying the dimensions and the point to draw from
+    .color(&quot;#ff0000&quot;) // Specifying the colour of the rectangle
+    .bind(&quot;EnterFrame&quot;, function() { // Binds the &quot;EnterFrame&quot; event to the entity
+        playerVel += g; // Adds the &quot;gravitational acceleration&quot; to the player&#x27;s velocity 
+        this.y += playerVel; // Change the player entities y position based on the player velocity
+    })
+    .bind(&quot;KeyDown&quot;, function(event) { // Binds the &quot;KeyDown&quot; event to our player entity
+        if(event.key == Crafty.keys.SPACE){ // If the key is the spacebar then &quot;flap&quot; 
+            playerVel = -5; // Sets the player&#x27;s speed and direction to go upwards     
+        }
+    });
+</div>
+            </div>
+            <div class="flex-container div-half">
+                <div class="flex-container">
+                    <h2>Preview</h2>
+                    <div class="div-content" id="game-container">
+                    </div>
+                    <h2>Console Log:</h2>
+                    <div class="div-content" id="log-div"> </div>
+                    <div class="div-content">
+                        <h1></h1>
+                        <h2 id="part-3-refactoring">Part 3: Refactoring</h2>
+<h3 id="goal-swapping-some-hard-coded-values-for-some-variables">Goal: Swapping some hard coded values for some variables</h3>
+<p><em>Time estimate for Part 3: 5 minutes</em></p>
+<p>When programming games, as well as programming in general, it is usually a bad idea to use “hard coded values” for values which might be used a number of times in different parts of your code. This is because it makes it more difficult and time consuming to change the value if you have to find every place where you used it and update it.</p>
+<p>To avoid this problem to some extent with our game we’re going to move some of the values which we have “hard coded” in our game so far to variables! That way if we need to change a value across our whole program we only have to change the variable, or if we want to use one of these values as a parameter for something else we can just use the variables name instead of finding and providing specific values.</p>
+<p>What we’re doing is called <strong>refactoring</strong> - this is improving readibility or extendability of our code without changing the behaviour the program (our game) shows.</p>
+<p>The first value we’re going to move to a variable is the player’s size! This is because in our game we’re using a square to represent the player so both the entities width and height are the same. Instead of using two values we can just use the same variable, while also using it later on (which we will). To do this let’s create a variable <code>playerSize</code> at the top of our JavaScript and set it to the value we use in our player entity!</p>
+<pre><code class="lang-javascript">var playerSize = 15;
+</code></pre>
+<p>We then want to make our player entity use the variable as a parameter in the <code>.attr</code> method, replacing the hard coded values as shown:</p>
+<pre><code class="lang-javascript">    .attr({x: 30, y: 30, w: playerSize, h: playerSize})
+</code></pre>
+<p>With that done we can create our next set of variables. These next two variables we’re making aren’t values that we have written in our JavaScript yet, but are being used behind the scenes by our hidden <code>Crafty.init();</code> to give our game the width and height of its scene. The two variables we’re declaring will be called <code>sceneWidth</code> and <code>sceneHeight</code> and we will set them to the values our <code>Crafty.init();</code> is using behind the scenes.</p>
+<pre><code class="lang-javascript">var sceneWidth = 300, sceneHeight = 150; // Setting game dimensions as variables for reference
+</code></pre>
+<p>Having these variables will allow us to reference the height and width of our game scene, which will be useful later on when we use these values in other parts of our game.</p>
+<p><em>Well done! That’s the first section of our game creation complete, but feel free to try playing about with the values of <code>g</code> and the value that “flapping” sets <code>playerVel</code> to.</em></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script defer>
+        $(document).ready(function() {
+    $('#nextLesson').addClass("lessonComplete");
+});
+
+var codeTest = function() {
+    return "notest";
+}
+
+    </script>
+    <!-- Editor (ace) -->
+
+    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+            ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+</body>
+
+</html>

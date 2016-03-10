@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Lesson 5 - Learn You A Code</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    <script src="js/prism.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <!-- nav stuff. -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sections.html" class="active">Sections</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="nagbar" style="display:none">
+        <p>Your code doesn't seem to do what we're looking for. Check it and try again!</p>
+        <i class="fa fa-close"></i>
+    </div>
+
+    <!-- Main content. -->
+    <div class="overlay" style="display:none">
+        <span class="closeButton"><i class="fa fa-close"></i></span>
+            <h1>Section cleared!</h1>
+            <h2>You're a rockstar. Nice one you.</h2>
+            <a href="sections.html">View Sections</a>
+    </div>
+    <div class="main">
+        <header>
+            <div id="menu-button"><i class="fa fa-bars"></i></div>
+            <h1>Learn You A Code <i class="fa fa-code"></i><em>Lesson 5</em></h1>
+        </header>
+        <div class="container">
+            <div class="flex-container div-half">
+                <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span>
+                        <button onClick="window.location = 'sections.html'"><i class="fa fa-home"></i> Sections</button></h2>
+
+                <div id="codeEditor"></div>
+            </div>
+            <div class="flex-container div-half">
+                <div class="flex-container">
+                    <h2>Preview</h2>
+                    <div class="div-content" id="game-container">
+                    </div>
+                    <h2>Console Log:</h2>
+                    <div class="div-content" id="log-div"> </div>
+                    <div class="div-content">
+                        <h1>Good practices</h1>
+                        <p><em>Time to complete: 5 minutes</em></p> <p>Being able to write away code is great, however you will sometimes want to add notes to your code to make it easier to understand what things do, so for this you will need to use comments. In JS, when you write the <code>//</code> sign, the rest of the line is ignored, so you can write comments</p> <pre><code class="lang-javascript">    //This is a comment and will not do anything     var myName = &quot;Bob&quot;;     var myAge = 14;     //You can also comment out code     //myAge = myAge * 2;     console.log(myName);     console.log(myAge); </code></pre> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script defer>
+        $(document).ready(function() {
+    $('#nextLesson').addClass("lessonComplete");
+});
+
+var codeTest = function() {
+    return "notest";
+}
+
+    </script>
+    <!-- Editor (ace) -->
+
+    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+            ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+</body>
+
+</html>

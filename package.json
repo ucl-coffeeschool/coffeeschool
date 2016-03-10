@@ -21,6 +21,7 @@
     "gulp-ruby-sass": "^2.0.6"
   },
   "dependencies": {
-    "gulp-rename": "^1.2.2"
+    "gulp-rename": "^1.2.2",
+    "handlebars": "^4.0.5"
   }
 }
