@@ -95,9 +95,10 @@ nav {
         list-style: none;
         line-height: 1.5rem;
         margin-bottom: 1rem; }
+        .main .container ol.lessons li:before {
+          counter-increment: li; }
         .main .container ol.lessons li:before, .main .container ol.lessons li a {
           content: counter(li);
-          counter-increment: li;
           color: #164666;
           font-size: 2rem;
           margin-right: 0.25rem; }

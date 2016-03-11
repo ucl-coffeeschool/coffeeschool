@@ -140,9 +140,11 @@ nav {
                 //list-style-position:inside;
                 list-style:none;
                 line-height:1.5rem;
+                &:before {
+                    counter-increment: li;
+                }
                 &:before, a {
                     content: counter(li);
-                    counter-increment: li;
                     color:$color-primary-dark;
                     font-size:2rem;
                     margin-right:0.25rem;
