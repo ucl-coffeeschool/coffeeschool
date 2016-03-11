@@ -1,0 +1,37 @@
+{
+    "name": "Intro",
+    "nameNice": "Introduction to JavaScript",
+    "descriptionShort": "Get started from the basics",
+    "description": "This course is designed to teach you the basics of JavaScript (JS), which is the programming language which is most commonly used on the web to add interaction to HTML webpages. We will cover the basics of JS here, so that you can then use it in the later lessons to make a game. This course is based on learning coding, so lets jump in",
+    "lessons": [{
+        "name": "lesson1",
+        "nameNice": "Welcome!",
+        "description": "Write your first Javascript function"
+    },
+    {
+        "name": "lesson2",
+        "nameNice": "Maths",
+        "description": "Lets do some calculations"
+    },
+    {
+        "name": "lesson3",
+        "nameNice": "Variables!",
+        "description": "Remembering things is great"
+    },
+    {
+        "name": "lesson4",
+        "nameNice": "Good practices!",
+        "description": "Now make your code pretty"
+    },
+    {
+        "name": "lesson5",
+        "nameNice": "Conditionals",
+        "description": "If I want to succeed, I will learn code"
+    },
+    {
+        "name": "lesson6",
+        "nameNice": "FizzBuzz",
+        "description": "Lets write a simple game"
+    }
+    ]
+}

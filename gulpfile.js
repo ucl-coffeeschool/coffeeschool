@@ -151,9 +151,10 @@ gulp.task('sass', function () {
 
 
 /**
- * Default task. Will watch the handlebars template and the scss file for changes and run tasks above as needed.
+ * Default task. Will watch the handlebars template and the scss file and lessons for changes and run tasks above as needed.
  **/
 gulp.task('default', function () {
-    gulp.watch('src/*.hbs', ['handlebars']);
-    gulp.watch('src/css/*.scss', ['sass']);
+    gulp.watch('interface/template.hbs', ['handlebars']);
+    gulp.watch('interface/css/*.scss', ['sass']);
+    gulp.watch('lessons/00-intro/*', ['compileLessons','handlebars']);
 });
