@@ -1,5 +1,8 @@
-### Task A: Creating Gravitational Behaviour 
-#### Goal: Keeping Track of the Players Motion
+---
+title: Task A- Creating Gravitational Behaviour
+---
+
+## Goal: Keeping Track of the Players Motion
 
 Crafty has a `Gravity` component in the library, but because we are using our own movement system we're not going to use it. Instead we will be creating a simplified semblance of gravity's behaviour. To do this we're going to create two variable at the top of our JavaScript:
 

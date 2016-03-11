@@ -10,3 +10,5 @@ myAge = myAge * 2;
 console.log(myName);
 console.log(myAge);
 ```
+
+Remember to click 'update' once you're done!
