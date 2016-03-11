@@ -1,7 +1,7 @@
-```
-title :  Game Lesson One - Creating The Player
-```
-*Time estimate for this lesson: 25 minutes*
+---
+title:  Game Lesson One - Creating The Player
+---
+*Time estimate for this lesson: 20 minutes*
 
 If we wish to create a flappy bird style game then we need a representation of the player that we have clear the obstacles. For now, let us keep the graphics simple and focus on the key points of the game. To this end we will be representing our player with a red square.
 

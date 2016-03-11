@@ -1,7 +1,7 @@
-```
+---
 title:  Game Lesson Two - Creating the Environment and the Obstacles
-```
-*Time estimate for this lesson: 35 minutes*
+---
+*Time estimate for this lesson: 30 minutes*
 
 For our game, the key gameplay mechanic is making the player pass through an unending series of obstacles of differing height. Another key point in such a game is to not let the player touch the ground of the scene. 
 

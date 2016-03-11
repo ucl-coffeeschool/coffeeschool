@@ -1,4 +1,4 @@
-#### Game Engines and Game Loops
+### Game Engines and Game Loops
 
 With our variables in place to keep track of and affect the players motion we can now cause the player to move as a result of the values of these variables. To constantly update the speed, direction of movement and position of our player we need to know about "game loops". 
 
