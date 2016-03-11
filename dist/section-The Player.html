@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>The Player - Learn You A Code</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    <script src="js/prism.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <!-- nav stuff. -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sections.html" class="active">Sections</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <!-- Main content. -->
+    <div class="main">
+        <header>
+            <div id="menu-button"><i class="fa fa-bars"></i></div>
+            <h1>Learn You A Code <i class="fa fa-code"></i><em>The Player</em></h1>
+        </header>
+        <div class="container">
+            <div class="flex-container div-half">
+                <h1>Creating the Player</h1>
+                <p>In this section you will be introduced to Crafty JS, creating our base player and making it be able to jump and be affected by a form of gravity.</p>
+                <ol>
+                        <li><a href="section-The Player-lesson-part1-1.html">Introduction to Crafty</a> - Here we introduce you to Crafty JS and entities  </li>
+                        <li><a href="section-The Player-lesson-part1-2.html">Drawing the Player</a> - In this lesson you will draw the player&#x27;s avatar using an entity  </li>
+                        <li><a href="section-The Player-lesson-part2-1.html">Creating the Player&#x27;s Movement System</a> - Here we consider the types of movement that a player will undergo in our game  </li>
+                        <li><a href="section-The Player-lesson-part2-2.html">Keeping Track of the Players Motion</a> - You will set up some variables which will keep track of and affect player movement  </li>
+                        <li><a href="section-The Player-lesson-part2-3.html">Introduction to Game Loops</a> - This section introduces you to game loops within games engines and frameworks, as well as Craftys own version  </li>
+                        <li><a href="section-The Player-lesson-part2-4.html">Updating the Player&#x27;s Position and Velocity</a> - Here you will use the game loop to make a gravitational force act on your player and then move the player based on their speed  </li>
+                        <li><a href="section-The Player-lesson-part2-5.html">Letting the Player &quot;flap&quot;</a> - In this lesson you&#x27;ll introduce keyboard interaction and allow the player to affect the game  </li>
+                        <li><a href="section-The Player-lesson-part3.html">Refactoring!</a> - Here you&#x27;ll modify some existing code and learn a little about refactoring  </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Editor (ace) -->
+
+    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+            ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+</body>
+
+</html>

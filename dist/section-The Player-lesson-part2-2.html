@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Lesson 4 - Learn You A Code</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    <script src="js/prism.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <!-- nav stuff. -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sections.html" class="active">Sections</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="nagbar" style="display:none">
+        <p>Your code doesn't seem to do what we're looking for. Check it and try again!</p>
+        <i class="fa fa-close"></i>
+    </div>
+
+    <!-- Main content. -->
+    <div class="overlay" style="display:none">
+        <span class="closeButton"><i class="fa fa-close"></i></span>
+            <h1>Lesson completed!</h1>
+            <h2>Give yourself a pat on the back.</h2>
+            <a href="section-The Player-lesson-part2-3.html">Next lesson!</a>
+    </div>
+    <div class="main">
+        <header>
+            <div id="menu-button"><i class="fa fa-bars"></i></div>
+            <h1>Learn You A Code <i class="fa fa-code"></i><em>Lesson 4</em></h1>
+        </header>
+        <div class="container">
+            <div class="flex-container div-half">
+                <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span>
+                        <button id="nextLesson" onClick="window.location = 'section-The Player-lesson-part2-3.html'"><i class="fa fa-arrow-right"></i> Next Lesson</button>
+                        </h2>
+
+                <div id="codeEditor">// Create our player&#x27;s base entity
+Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
+    .attr({x: 30, y: 30, w: 15, h: 15}) // Specifying the dimensions and the point to draw from
+    .color(&quot;#ff0000&quot;); // Specifying the colour of the rectangle
+</div>
+            </div>
+            <div class="flex-container div-half">
+                <div class="flex-container">
+                    <h2>Preview</h2>
+                    <div class="div-content" id="game-container">
+                    </div>
+                    <h2>Console Log:</h2>
+                    <div class="div-content" id="log-div"> </div>
+                    <div class="div-content">
+                        <h1></h1>
+                        <h3 id="task-a-creating-gravitational-behaviour">Task A: Creating Gravitational Behaviour</h3>
+<h4 id="goal-keeping-track-of-the-players-motion">Goal: Keeping Track of the Players Motion</h4>
+<p>Crafty has a <code>Gravity</code> component in the library, but because we are using our own movement system we’re not going to use it. Instead we will be creating a simplified semblance of gravity’s behaviour. To do this we’re going to create two variable at the top of our JavaScript:</p>
+<pre><code class="lang-javascript">var playerVel = 0; // Used to keep track of player&#39;s vertical speed and direction.
+var g = 0.5; // Creating a value which we can reference as the acceleration caused by our gravity
+</code></pre>
+<p>We have created <code>g</code> as a variable so that we can reference to the same value of gravity for anything in our game that is affected and only have to change the variable <strong>once</strong> for it to affect everything.</p>
+<p>You may be wondering why we’ve given a positive value to <code>g</code>. If you recall from earlier, when referencing coordinates the origin (0,0) within the game scene is located in the <em>top left corner</em> of the scene. This means that an increase in the y position of an entity, such as our player’s character will actually move it <em>downwards</em> from the player’s perspective.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script defer>
+        function codeTest() {
+    var lc = editor.getValue().toLowerCase();
+    if (/var\s+playervel\s*\=\s*0/.test(lc) && /var\s+g\s*\=\s*0\.5/.test(lc)) {
+        return "true";
+    }
+    else {
+        return "false";
+    }
+}
+
+    </script>
+    <!-- Editor (ace) -->
+
+    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+            ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+</body>
+
+</html>
