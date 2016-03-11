@@ -1,18 +1,8 @@
-Learn you a code Working Title
-==============================
+# Coffee School
 
-Our team is Alexis Enston, Matt Bell and Fraser Savage. We were inspired to create this because we wanted to show how easy programming in JavaScript was and how students can create interactive websites easily. Also we wanted to say that the sterotype of hackers in basements was not true, and that computer scientists come from a wide range of backgrounds and skills, and to convince people that Computer Science is a viable career option.
+Coffee School is a project to provide an introduction to JavaScript and give some exposure to game development in an interactive environment where the student can see the direct result of their code without having to install or run anything locally on their machine.
 
-This is our project for Coding Curriculum. Our aim is to teach GCSE aged students how to program with JavaScript by creating a game through a number of lessons, culminating in making a flappy birds clone.
-
-For the lessons the lessons the students will just need a web browser.
-
-So far we have the interface and some begining lessons in the lessons folder, the interface that the students will use in the interface folder, and under flappySquare what we hope the students will achieve onece they've finished our course. We still need to complete all of the lessons, and smarten up the editor.
-
-Contribution and team spirit allocation:
-Matt Bell 35
-Fraser Savage 33
-Alexis Enston 32
+Once students are introduced to JavaScript in general, Coffee School gets students to produce a game similar to "Flappy Bird" through a series of lessons using a JavaScript framework called Craftyjs while trying to inform about programming and game development concepts and practices where relevant.
 
 This project is licensed under the GNU GPL.
 
