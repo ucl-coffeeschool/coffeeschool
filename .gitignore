@@ -8,3 +8,4 @@ nohup*
 tmp/**/*.json
 lessons/**/*.json
 !lessons/**/section.json
+dist/section*
