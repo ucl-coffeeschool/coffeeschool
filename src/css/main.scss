@@ -1,4 +1,5 @@
 // style colours. Try to use these as much as possible
+@import url(https://fonts.googleapis.com/css?family=Karla:400,700,400italic,700italic);
 $color-text:#35404A;
 $color-bg:#DCE1E6;
 //$color-primary:#16a085;
@@ -11,6 +12,7 @@ $color-secondary-dark:darken($color-secondary,20);
 
 // fonts
 $font-mono:"Source Code Pro",Monaco,monospace;
+$font-standard: "Karla", Helvetica, sans-serif;
 
 // measures
 $measure-header-height:3rem;
@@ -20,6 +22,7 @@ $measure-navitem-height:3rem;
 html,body {
     height:100%;
     margin:0;
+    font-family:$font-standard;
     overflow:hidden;
     // stop pesky child elements from fiddling with layout.
     overflow:hidden;
