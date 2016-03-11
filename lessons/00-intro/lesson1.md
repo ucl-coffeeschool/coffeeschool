@@ -6,7 +6,7 @@ Hey there! Welcome to JavaScript. Let's get you straight up writing code. Progra
 In the code editor, write
 
 ```javascript
-    console.log('Hello world!');
+    console.log('Hello World!');
 ```
 
-Then press "update" to test the code and Hello world! appear in the console!
+Then press "update" to test the code and Hello World! appear in the console!

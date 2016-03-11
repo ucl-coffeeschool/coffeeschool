@@ -25,8 +25,13 @@
     },
     {
         "name": "lesson5",
-        "nameNice": "Welcome!",
-        "description": "Write your first Javascript function"
+        "nameNice": "Conditionals",
+        "description": "If I want to succeed, I will learn code"
+    },
+    {
+        "name": "lesson6",
+        "nameNice": "FizzBuzz",
+        "description": "Lets write a simple game"
     }
     ]
 }
