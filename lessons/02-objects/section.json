@@ -15,27 +15,27 @@
     },
     {
         "name": "part2-1",
-        "nameNice": "",
-        "description": ""
+        "nameNice": "Making Moving Obstacles",
+        "description": "Briefly discusses the strategy to how you will generate obstacles"
     },
     {
         "name": "part2-2",
-        "nameNice": "",
-        "description": ""
+        "nameNice": "Creating the Obstacle Generation Function",
+        "description": "Here you'll create your obstacle generating function and create some variables in it to use when making the obstacles"
     },
     {
         "name": "part2-3",
-        "nameNice": "",
-        "description": ""
+        "nameNice": "Generating Obstacle Entities",
+        "description": "In this section you'll finish off your obstacle generation function by generating a pair of entities using the variables created earlier"
     },
     {
         "name": "part2-4",
-        "nameNice": "",
-        "description": ""
+        "nameNice": "Creating Obstacles at set Intervals",
+        "description": "Using a counter to create obstacles at a fixed rate"
     },
     {
         "name": "part2-5",
-        "nameNice": "",
-        "description": "" 
+        "nameNice": "Moving the Obstacles!",
+        "description": "Here you will add code to the game loop to move obstacles across the screen and destroy them if they go off the screen" 
     }]
 }
