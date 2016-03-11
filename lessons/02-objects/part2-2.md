@@ -31,11 +31,11 @@ Now that we have the `randomHeight` variable being created we can use it to crea
 Creating the bottom of the top half we will use the `playAreaHeight` and the `randomHeight` value that we have calculated, as well as the `playerSize`.
 
 ```javascript
-var bottomOfTopHalf = playAreaHeight - (randomHeight - playerSize);
+var bottomOfTopHalf = playAreaHeight - randomHeight;
 ```
 
-This variable uses the `playAreaHeight` and makes the bottom of the top part at the point of the random height we calculated away from the ground. We reduce the height by the `playerSize` to give a bit of breathing room to the top part of the scene.
-
+This variable uses the `playAreaHeight` and makes the bottom of the top part at the point of the random height we calculated away from the ground.
+ 
 For the top of the bottom half we will use what we just calculated and then add a multiple of the player size to size the gap. For this example I'm going to use 4, but you should try some different later on and see what happens!
 
 ```javascript
@@ -51,6 +51,12 @@ function newObstacle()
     var bottomOfTopHalf = playAreaHeight - (randomHeight - playerSize);
     var topOfBottomHalf = bottomOfTopHalf + (4 * playerSize);
 }
+```
+
+The last variable we're going to make is the `objectWidth`, which we'll place at the top of our JavaScript (but below `playerSize`). For now try setting it to twice the `playerSize`.
+
+```javascript
+var objectWidth = 2 * playerSize;
 ```
 
 With our object value variables set up we're now ready to create the entities.

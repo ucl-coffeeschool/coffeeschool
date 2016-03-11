@@ -12,5 +12,30 @@
         "name": "part1-2",
         "nameNice": "Creating the Ground",
         "description": "Drawing the ground, using variables to determine its dimensions."
+    },
+    {
+        "name": "part2-1",
+        "nameNice": "",
+        "description": ""
+    },
+    {
+        "name": "part2-2",
+        "nameNice": "",
+        "description": ""
+    },
+    {
+        "name": "part2-3",
+        "nameNice": "",
+        "description": ""
+    },
+    {
+        "name": "part2-4",
+        "nameNice": "",
+        "description": ""
+    },
+    {
+        "name": "part2-5",
+        "nameNice": "",
+        "description": "" 
     }]
 }

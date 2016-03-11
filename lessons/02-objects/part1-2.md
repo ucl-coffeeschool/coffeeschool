@@ -2,18 +2,20 @@
 *Time estimate for Part 1: 5 minutes*
 ### Goal: Draw the ground
 
-To create our ground we're going to use a rectangular entity similar in a similar vein to the base player avatar we used, however we can replace the `DOM` component with the `Canvas` one and make use of the scene variables that we created at the end of the last lesson.
+To create our ground we're going to use a rectangular entity similar in a similar vein to the base player avatar we used, however we can make use of the scene variables that we created at the end of the last lesson.
 
 The code to draw the ground entity is the following, and we'll place it before our code for the player:
 
 ```javascript
-Crafty.e("2D, Canvas, Color") // Adding the 2D, Canvas and Color components
+Crafty.e("Solid, 2D, DOM, Color") // Adding the Solid, 2D, DOM and Color components
     .attr({x: 0,
            y: playAreaHeight,// We haven't yet declared this value.
            w: sceneWidth,    // This was declared earlier when getting rid of "hard coded" values
            h: groundHeight}) // Bear with us on these undeclared variables!
     .color("#00ff00");
 ```
+
+You may have noticed that a `Solid` component has been added to the ground here. This component will allow us to check for collisions with our player later on.
 
 The entity which we have written code for isn't yet valid, as we haven't declared the `playeAreaHeight` or `groundHeight` variables yet. We should fix this and create them so that our code is valid.
 

@@ -17,7 +17,7 @@ Adding this line of code to our player should result in the code for our player 
 
 ```javascript
 Crafty.e("2D, DOM, Color")
-    .attr({x: 30, y: 30, w: 15, h: 15})
+    .attr({x: 30, y: 30, w: 10, h: 10})
     .color("#ff0000")
     .bind("EnterFrame", function() {
         // Whenever the "EnterFrame" event (each game loop) occurs the code in this function will run

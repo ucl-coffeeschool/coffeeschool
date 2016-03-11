@@ -14,8 +14,8 @@ To create the rectangle on the screen we extend the entity with the following co
 
 ```javascript
 Crafty.e("2D, DOM, Color") // Creating the entity and adding components
-    .attr({x: 30, y: 30, w: 15, h: 15}) // Specifying point to draw from (x,y) and dimensions to use 
+    .attr({x: 30, y: 30, w: 10, h: 10}) // Specifying point to draw from (x,y) and dimensions to use 
     .color("#ff0000"); // Specifying the colour and drawing the rectangle
 ```
 
-This produces a *red* rectangle, drawn 30 pixels down and 30 pixels across from the *top-left* of the scene. We have specified the rectangle's width and height as 15 pixels.
+This produces a *red* rectangle, drawn 30 pixels down and 30 pixels across from the *top-left* of the scene. We have specified the rectangle's width and height as 10 pixels.

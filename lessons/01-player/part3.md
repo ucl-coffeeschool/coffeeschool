@@ -11,7 +11,7 @@ What we're doing is called **refactoring** - this is improving readibility or ex
 The first value we're going to move to a variable is the player's size! This is because in our game we're using a square to represent the player so both the entities width and height are the same. Instead of using two values we can just use the same variable, while also using it later on (which we will). To do this let's create a variable `playerSize` at the top of our JavaScript and set it to the value we use in our player entity!
 
 ```javascript
-var playerSize = 15;
+var playerSize = 10;
 ```
 
 We then want to make our player entity use the variable as a parameter in the `.attr` method, replacing the hard coded values as shown:

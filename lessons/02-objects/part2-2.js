@@ -1,15 +1,23 @@
 // Creating environment variables
-var playerSize = 15;
+var playerSize = 10;
 var sceneWidth = 300, sceneHeight = 150;
 var groundHeight = 10;
 var playAreaHeight = (sceneHeight - groundHeight);
 // Create the variables to track player movement 
 var playerVel = 0; // Stores the player's velocity
-var g = 0.5;       // The constant acceleration cause by "gravity"
+var g = 0.4;       // The constant acceleration cause by "gravity"
+
+// Create the ground!
+Crafty.e("Solid, 2D, DOM, Color")
+    .attr({x: 0,
+           y: playAreaHeight,
+           w: sceneWidth,
+           h: groundHeight})
+    .color("#00ff00");
 
 // Create our player's base entity
 Crafty.e("2D, DOM, Color") // Specifying the components to add 
-    .attr({x: 30, y: 30, w: 15, h: 15}) // Specifying the dimensions and the point to draw from
+    .attr({x: 30, y: 30, w: playerSize, h: playerSize}) // Specifying the dimensions and the point to draw from
     .color("#ff0000") // Specifying the colour of the rectangle
     .bind("EnterFrame", function() { // Binds the "EnterFrame" event to the entity
         playerVel += g; // Adds the "gravitational acceleration" to the player's velocity 
