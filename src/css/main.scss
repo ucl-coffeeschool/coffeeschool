@@ -1,9 +1,11 @@
 // style colours. Try to use these as much as possible
 $color-text:#35404A;
 $color-bg:#DCE1E6;
-$color-primary:#16a085;
+//$color-primary:#16a085;
+$color-primary: #2980b9;
 $color-primary-dark:darken($color-primary,20);
-$color-secondary:#f39c12;
+//$color-secondary:#f39c12;
+$color-secondary: #d35400;
 $color-danger:#e74c3c;
 $color-secondary-dark:darken($color-secondary,20);
 
@@ -117,12 +119,37 @@ nav {
     .container {
         &.noflex {
             display:block;
+            padding:0.5rem;
         }
 
         width:100%;
         flex:1 1 auto;
         display:flex;
         flex-flow:row;
+
+        ol.lessons {
+            display:flex;
+            flex-direction:row;
+            flex-wrap: wrap;
+            counter-reset: li;
+            padding:0;
+
+            li {
+                width:50%;
+                flex:0 0 auto;
+                //list-style-position:inside;
+                list-style:none;
+                line-height:1.5rem;
+                &:before, a {
+                    content: counter(li);
+                    counter-increment: li;
+                    color:$color-primary-dark;
+                    font-size:2rem;
+                    margin-right:0.25rem;
+                }
+                margin-bottom:1rem;
+            }
+        }
     }
 
     .div-half {
@@ -193,6 +220,34 @@ nav {
     }
 }
 
+a.button {
+    padding:0.3rem 0.5rem;
+    border:1px $color-text solid;
+    color:$color-text;
+    text-decoration:none;
+    font-size:1.4rem;
+    border-radius:1rem;
+    background-color:transparent;
+    transition:background-color 0.25s ease-in-out,
+    color 0.25s ease-in-out;
+
+    &:hover {
+        background-color:$color-text;
+        color:$color-bg;
+    }
+}
+
+a {
+    color:$color-text;
+}
+
+section h2 {
+    margin:0.5rem 0;
+}
+section p {
+    margin:0.5rem 0;
+}
+
 .closeButton {
     position:absolute;
     right:0;
@@ -204,7 +259,7 @@ nav {
     vertical-align:middle;
     cursor:pointer;
     transition:background-color 0.25s ease-in-out,
-                color 0.25s ease-in-out;
+    color 0.25s ease-in-out;
     i {
         width:3rem;
     }
@@ -274,6 +329,7 @@ nav {
 #game-container {
     min-width:300px;
     min-height:150px;
+    border:0.1rem $color-text solid;
 }
 
 canvas#game-preview {

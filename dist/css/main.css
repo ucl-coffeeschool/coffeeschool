@@ -15,7 +15,7 @@ nav {
   height: 100%;
   overflow-y: auto;
   top: 0;
-  background: #0a463a;
+  background: #164666;
   transition: left 0.25s ease-in-out; }
   nav.active {
     left: 0; }
@@ -30,7 +30,7 @@ nav {
     background: none;
     transition: background 0.25s ease-in-out; }
     nav a:hover {
-      background: #16a085; }
+      background: #2980b9; }
 
 .main {
   width: 100%;
@@ -46,7 +46,7 @@ nav {
     left: 20rem; }
   .main header {
     height: 3rem;
-    background: #16a085;
+    background: #2980b9;
     color: #DCE1E6;
     overflow: hidden;
     display: block;
@@ -81,7 +81,26 @@ nav {
     display: flex;
     flex-flow: row; }
     .main .container.noflex {
-      display: block; }
+      display: block;
+      padding: 0.5rem; }
+    .main .container ol.lessons {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      counter-reset: li;
+      padding: 0; }
+      .main .container ol.lessons li {
+        width: 50%;
+        flex: 0 0 auto;
+        list-style: none;
+        line-height: 1.5rem;
+        margin-bottom: 1rem; }
+        .main .container ol.lessons li:before, .main .container ol.lessons li a {
+          content: counter(li);
+          counter-increment: li;
+          color: #164666;
+          font-size: 2rem;
+          margin-right: 0.25rem; }
   .main .div-half {
     padding: 10px;
     width: calc(50% - 20px);
@@ -106,30 +125,52 @@ nav {
       flex-shrink: 0;
       align-self: flex-end;
       vertical-align: top;
-      background: #f39c12;
+      background: #d35400;
       color: #DCE1E6;
-      border: 2px solid #976008;
+      border: 2px solid #6d2b00;
       border-width: 1px 1px 3px 1px;
       border-radius: 3px;
       bottom: 0px;
       position: relative;
       transition: background 0.1s ease-in-out, border-width 0.1s ease-in-out; }
       .main .flex-container button:hover {
-        background: #f8c573;
+        background: #ff883a;
         border-width: 1px 1px 4px 1px;
         bottom: 1px; }
       .main .flex-container button:active {
         border-width: 4px 1px 1px 1px;
-        background: #674105; }
+        background: #3a1700; }
       .main .flex-container button:focus {
         outline: none; }
       .main .flex-container button:disabled {
         color: #e1e1e1;
-        background: #838383; }
+        background: #6a6a6a; }
     .main .flex-container h1, .main .flex-container h2, .main .flex-container h3 {
       flex: 0 0 auto; }
     .main .flex-container * {
       align-self: stretch; }
+
+a.button {
+  padding: 0.3rem 0.5rem;
+  border: 1px #35404A solid;
+  color: #35404A;
+  text-decoration: none;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  background-color: transparent;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out; }
+  a.button:hover {
+    background-color: #35404A;
+    color: #DCE1E6; }
+
+a {
+  color: #35404A; }
+
+section h2 {
+  margin: 0.5rem 0; }
+
+section p {
+  margin: 0.5rem 0; }
 
 .closeButton {
   position: absolute;
@@ -184,7 +225,7 @@ nav {
   left: 0;
   top: 0; }
   .overlay h1, .overlay h2, .overlay a {
-    background-color: #f39c12;
+    background-color: #d35400;
     color: #DCE1E6;
     margin: 0rem; }
   .overlay h1 {
@@ -196,7 +237,8 @@ nav {
 
 #game-container {
   min-width: 300px;
-  min-height: 150px; }
+  min-height: 150px;
+  border: 0.1rem #35404A solid; }
 
 canvas#game-preview {
   background: #a1aebc;
