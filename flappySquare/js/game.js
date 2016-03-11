@@ -1,8 +1,8 @@
 // Global/Environment Variables
-var playerSize = 5;
+var playerSize = 10;
 var sceneWidth = 300, sceneHeight = 150, groundHeight = 10;
 var playAreaHeight = (sceneHeight - groundHeight);
-var g = 0.5;
+var g = 0.4;
 var objectWidth = 2 * playerSize; // Width of object is twice player size
 var score = 0;
 
@@ -79,7 +79,7 @@ Crafty.defineScene("Game", function() {
 
     // Creating the environment and UI
     // Ground creation
-    Crafty.e("Solid, Collision, 2D, Canvas, Color")
+    Crafty.e("Solid, Collision, 2D, DOM, Color")
         .attr({x: 0,
             y: playAreaHeight,
             w: sceneWidth,
@@ -161,11 +161,11 @@ function newObstacle()
 {
     // Declare generated boundaries of objects
     var randomHeight = Math.floor((Math.random() * (sceneHeight/2)) + (sceneHeight/3));
-    var bottomOfTopHalf = playAreaHeight - (randomHeight - playerSize);
+    var bottomOfTopHalf = playAreaHeight - randomHeight;
     var topOfBottomHalf = bottomOfTopHalf + (4 * playerSize); //makes gap approximately 4 x player size
 
     // Create the top half of the pipe
-    Crafty.e("Obstacle, 2D, Canvas, Color, Solid")
+    Crafty.e("Obstacle, 2D, DOM, Color, Solid")
         .attr({x: sceneWidth,
             y: 0,
             w: objectWidth,
@@ -173,7 +173,7 @@ function newObstacle()
         .color("#003319");
 
     // Bottom half of the pipe 
-    Crafty.e("Obstacle, 2D, Canvas, Color, Solid")
+    Crafty.e("Obstacle, 2D, DOM, Color, Solid")
         .attr({x: sceneWidth,
             y: topOfBottomHalf,
             w: objectWidth,
