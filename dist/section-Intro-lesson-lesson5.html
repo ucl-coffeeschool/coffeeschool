@@ -45,7 +45,15 @@
                         <button id="nextLesson" onClick="window.location = 'section-Intro-lesson-lesson6.html'"><i class="fa fa-arrow-right"></i> Next Lesson</button>
                         </h2>
 
-                <div id="codeEditor"></div>
+                <div id="codeEditor">// don&#x27;t change these!
+var numbers = [4, 34, 23, 7, 34, -10];
+
+for (var number in numbers) {
+    // for each number, do this:
+    // Remember, access the current number with &quot;numbers[number]&quot;.
+    // Then write &quot;true&quot; or &quot;false&quot; to the console if it is greater than 10.
+}
+</div>
             </div>
             <div class="flex-container div-half">
                 <div class="flex-container">
@@ -56,7 +64,19 @@
                     <div class="div-content" id="log-div"> </div>
                     <div class="div-content">
                         <h1>If statements</h1>
-                        <p><em>Time to complete: 5 minutes</em></p> <p>You will want to change what your program does depending on the inputs.  In javascript, <code>===</code> is used to test if two values are equal., and <code>!</code> is the negation operator, ie <code>!===</code> means not equal. The following shows the basic syntax used when doing this:</p> <pre><code class="lang-javascript">var sound = &quot;woof&quot;; if (sound === &quot;woof&quot;) {   console.log(&quot;its a dog&quot;); } else {   console.log(&quot;not a dog&quot;); } </code></pre> 
+                        <p><em>Time to complete: 5 minutes</em></p>
+<p>You will want to change what your program does depending on the inputs.  In javascript, <code>===</code> is used to test if two values are equal., and <code>!</code> is the negation operator, ie <code>!===</code> means not equal. The following shows the basic syntax used when doing this:</p>
+<pre><code class="lang-javascript">var sound = &quot;woof&quot;;
+if (sound === &quot;woof&quot;) {
+  console.log(&quot;its a dog&quot;);
+}
+else {
+  console.log(&quot;not a dog&quot;);
+}
+</code></pre>
+<p>Let’s try this now. We’re going to give you a list of numbers, <code>numbers</code>, and if they are <strong>greater than 10</strong> then return <code>true</code>, otherwise return <code>false</code>. Good luck!</p>
+<p>P.S.: We’re using a loop to go through each number. You can access the current number with <code>numbers[number]</code>.</p>
+
                     </div>
                 </div>
             </div>
@@ -65,12 +85,32 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script defer>
-        $(document).ready(function() {
-    $('#nextLesson').addClass("lessonComplete");
-});
+        function arraysEqual(arr1, arr2) {
+    if (arr1.length !== arr2.length)
+        return false;
+    for (var i = arr1.length; i--;) {
+        if (arr1[i] !== arr2[i])
+            return false;
+    }
 
-var codeTest = function() {
-    return "notest";
+    return true;
+}
+
+function codeTest() {
+    var results = [];
+    consoleOut.forEach(function (el, ind, arr) {
+        if(/true/.test(el.toLowerCase()))
+            results.push(true);
+        else
+            results.push(false);
+    });
+
+    if (arraysEqual(results, [false, true, true, false, true, false])) {
+        return "true";
+    }
+    else {
+        return "false";
+    }
 }
 
     </script>

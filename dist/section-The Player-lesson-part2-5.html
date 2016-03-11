@@ -47,11 +47,11 @@
 
                 <div id="codeEditor">// Create the variables to track player movement 
 var playerVel = 0; // Stores the player&#x27;s velocity
-var g = 0.5;       // The constant acceleration cause by &quot;gravity&quot;
+var g = 0.4;       // The constant acceleration cause by &quot;gravity&quot;
 
 // Create our player&#x27;s base entity
 Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
-    .attr({x: 30, y: 30, w: 15, h: 15}) // Specifying the dimensions and the point to draw from
+    .attr({x: 30, y: 30, w: 10, h: 10}) // Specifying the dimensions and the point to draw from
     .color(&quot;#ff0000&quot;) // Specifying the colour of the rectangle
     .bind(&quot;EnterFrame&quot;, function() { // Binds the &quot;EnterFrame&quot; event to the entity
         playerVel += g; // Adds the &quot;gravitational acceleration&quot; to the player&#x27;s velocity 

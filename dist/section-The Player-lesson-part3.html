@@ -46,11 +46,11 @@
 
                 <div id="codeEditor">// Create the variables to track player movement 
 var playerVel = 0; // Stores the player&#x27;s velocity
-var g = 0.5;       // The constant acceleration cause by &quot;gravity&quot;
+var g = 0.4;       // The constant acceleration cause by &quot;gravity&quot;
 
 // Create our player&#x27;s base entity
 Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
-    .attr({x: 30, y: 30, w: 15, h: 15}) // Specifying the dimensions and the point to draw from
+    .attr({x: 30, y: 30, w: 10, h: 10}) // Specifying the dimensions and the point to draw from
     .color(&quot;#ff0000&quot;) // Specifying the colour of the rectangle
     .bind(&quot;EnterFrame&quot;, function() { // Binds the &quot;EnterFrame&quot; event to the entity
         playerVel += g; // Adds the &quot;gravitational acceleration&quot; to the player&#x27;s velocity 
@@ -79,7 +79,7 @@ Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add
 <p>To avoid this problem to some extent with our game we’re going to move some of the values which we have “hard coded” in our game so far to variables! That way if we need to change a value across our whole program we only have to change the variable, or if we want to use one of these values as a parameter for something else we can just use the variables name instead of finding and providing specific values.</p>
 <p>What we’re doing is called <strong>refactoring</strong> - this is improving readibility or extendability of our code without changing the behaviour the program (our game) shows.</p>
 <p>The first value we’re going to move to a variable is the player’s size! This is because in our game we’re using a square to represent the player so both the entities width and height are the same. Instead of using two values we can just use the same variable, while also using it later on (which we will). To do this let’s create a variable <code>playerSize</code> at the top of our JavaScript and set it to the value we use in our player entity!</p>
-<pre><code class="lang-javascript">var playerSize = 15;
+<pre><code class="lang-javascript">var playerSize = 10;
 </code></pre>
 <p>We then want to make our player entity use the variable as a parameter in the <code>.attr</code> method, replacing the hard coded values as shown:</p>
 <pre><code class="lang-javascript">    .attr({x: 30, y: 30, w: playerSize, h: playerSize})

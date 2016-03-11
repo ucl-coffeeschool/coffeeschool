@@ -65,10 +65,10 @@
 <p>This uses Crafty’s <code>.e</code> method to create an entity with the components “2D”, “DOM” and “Color”. Adding components to an entity in Crafty enables you to give it extra behaviour or functionality. 2D allows us to place the entity in the game’s view, while Color is used to draw coloured rectangles.</p>
 <p>To create the rectangle on the screen we extend the entity with the following code:</p>
 <pre><code class="lang-javascript">Crafty.e(&quot;2D, DOM, Color&quot;) // Creating the entity and adding components
-    .attr({x: 30, y: 30, w: 15, h: 15}) // Specifying point to draw from (x,y) and dimensions to use 
+    .attr({x: 30, y: 30, w: 10, h: 10}) // Specifying point to draw from (x,y) and dimensions to use 
     .color(&quot;#ff0000&quot;); // Specifying the colour and drawing the rectangle
 </code></pre>
-<p>This produces a <em>red</em> rectangle, drawn 30 pixels down and 30 pixels across from the <em>top-left</em> of the scene. We have specified the rectangle’s width and height as 15 pixels.</p>
+<p>This produces a <em>red</em> rectangle, drawn 30 pixels down and 30 pixels across from the <em>top-left</em> of the scene. We have specified the rectangle’s width and height as 10 pixels.</p>
 
                     </div>
                 </div>

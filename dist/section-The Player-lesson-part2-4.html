@@ -47,11 +47,11 @@
 
                 <div id="codeEditor">// Create the variables to track player movement 
 var playerVel = 0; // Stores the player&#x27;s velocity
-var g = 0.5;       // The constant acceleration cause by &quot;gravity&quot;
+var g = 0.4;       // The constant acceleration cause by &quot;gravity&quot;
 
 // Create our player&#x27;s base entity
 Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
-    .attr({x: 30, y: 30, w: 15, h: 15}) // Specifying the dimensions and the point to draw from
+    .attr({x: 30, y: 30, w: 10, h: 10}) // Specifying the dimensions and the point to draw from
     .color(&quot;#ff0000&quot;); // Specifying the colour of the rectangle
 </div>
             </div>
@@ -77,7 +77,7 @@ Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add
 </code></pre>
 <p>Adding this line of code to our player should result in the code for our player looking like this:</p>
 <pre><code class="lang-javascript">Crafty.e(&quot;2D, DOM, Color&quot;)
-    .attr({x: 30, y: 30, w: 15, h: 15})
+    .attr({x: 30, y: 30, w: 10, h: 10})
     .color(&quot;#ff0000&quot;)
     .bind(&quot;EnterFrame&quot;, function() {
         // Whenever the &quot;EnterFrame&quot; event (each game loop) occurs the code in this function will run

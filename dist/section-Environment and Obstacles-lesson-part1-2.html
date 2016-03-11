@@ -30,9 +30,9 @@
     <!-- Main content. -->
     <div class="overlay" style="display:none">
         <span class="closeButton"><i class="fa fa-close"></i></span>
-            <h1>Section cleared!</h1>
-            <h2>You're a rockstar. Nice one you.</h2>
-            <a href="sections.html">View Sections</a>
+            <h1>Lesson completed!</h1>
+            <h2>Give yourself a pat on the back.</h2>
+            <a href="section-Environment and Obstacles-lesson-part2-1.html">Next lesson!</a>
     </div>
     <div class="main">
         <header>
@@ -42,18 +42,19 @@
         <div class="container">
             <div class="flex-container div-half">
                 <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span>
-                        <button onClick="window.location = 'sections.html'"><i class="fa fa-home"></i> Sections</button></h2>
+                        <button id="nextLesson" onClick="window.location = 'section-Environment and Obstacles-lesson-part2-1.html'"><i class="fa fa-arrow-right"></i> Next Lesson</button>
+                        </h2>
 
                 <div id="codeEditor">// Creating environment variables
-var playerSize = 15;
+var playerSize = 10;
 var sceneWidth = 300, sceneHeight = 150;
 // Create the variables to track player movement 
 var playerVel = 0; // Stores the player&#x27;s velocity
-var g = 0.5;       // The constant acceleration cause by &quot;gravity&quot;
+var g = 0.4;       // The constant acceleration cause by &quot;gravity&quot;
 
 // Create our player&#x27;s base entity
 Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
-    .attr({x: 30, y: 30, w: 15, h: 15}) // Specifying the dimensions and the point to draw from
+    .attr({x: 30, y: 30, w: playerSize, h: playerSize}) // Specifying the dimensions and the point to draw from
     .color(&quot;#ff0000&quot;) // Specifying the colour of the rectangle
     .bind(&quot;EnterFrame&quot;, function() { // Binds the &quot;EnterFrame&quot; event to the entity
         playerVel += g; // Adds the &quot;gravitational acceleration&quot; to the player&#x27;s velocity 
@@ -78,15 +79,16 @@ Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add
                         <h2 id="part-1-creating-the-ground">Part 1: Creating the Ground</h2>
 <p><em>Time estimate for Part 1: 5 minutes</em></p>
 <h3 id="goal-draw-the-ground">Goal: Draw the ground</h3>
-<p>To create our ground we’re going to use a rectangular entity similar in a similar vein to the base player avatar we used, however we can replace the <code>DOM</code> component with the <code>Canvas</code> one and make use of the scene variables that we created at the end of the last lesson.</p>
+<p>To create our ground we’re going to use a rectangular entity similar in a similar vein to the base player avatar we used, however we can make use of the scene variables that we created at the end of the last lesson.</p>
 <p>The code to draw the ground entity is the following, and we’ll place it before our code for the player:</p>
-<pre><code class="lang-javascript">Crafty.e(&quot;2D, Canvas, Color&quot;) // Adding the 2D, Canvas and Color components
+<pre><code class="lang-javascript">Crafty.e(&quot;Solid, 2D, DOM, Color&quot;) // Adding the Solid, 2D, DOM and Color components
     .attr({x: 0,
            y: playAreaHeight,// We haven&#39;t yet declared this value.
            w: sceneWidth,    // This was declared earlier when getting rid of &quot;hard coded&quot; values
            h: groundHeight}) // Bear with us on these undeclared variables!
     .color(&quot;#00ff00&quot;);
 </code></pre>
+<p>You may have noticed that a <code>Solid</code> component has been added to the ground here. This component will allow us to check for collisions with our player later on.</p>
 <p>The entity which we have written code for isn’t yet valid, as we haven’t declared the <code>playeAreaHeight</code> or <code>groundHeight</code> variables yet. We should fix this and create them so that our code is valid.</p>
 <p>Let’s place the groundHeight and playAreaHeight variables at the top of our JavaScript along with the other game and scene variables. For our ground height we’re going to use a value of 10 pixels (but feel free to play about with this later!).</p>
 <pre><code class="lang-javascript">var groundHeight = 10;

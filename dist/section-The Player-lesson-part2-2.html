@@ -37,7 +37,7 @@
     <div class="main">
         <header>
             <div id="menu-button"><i class="fa fa-bars"></i></div>
-            <h1>Coffee School <i class="fa fa-code"></i><em>Task A- Creating Gravitational Behaviour</em></h1>
+            <h1>Coffee School <i class="fa fa-code"></i><em></em></h1>
         </header>
         <div class="container">
             <div class="flex-container div-half">
@@ -47,7 +47,7 @@
 
                 <div id="codeEditor">// Create our player&#x27;s base entity
 Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
-    .attr({x: 30, y: 30, w: 15, h: 15}) // Specifying the dimensions and the point to draw from
+    .attr({x: 30, y: 30, w: 10, h: 10}) // Specifying the dimensions and the point to draw from
     .color(&quot;#ff0000&quot;); // Specifying the colour of the rectangle
 </div>
             </div>
@@ -59,8 +59,9 @@ Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add
                     <h2>Console Log:</h2>
                     <div class="div-content" id="log-div"> </div>
                     <div class="div-content">
-                        <h1>Task A- Creating Gravitational Behaviour</h1>
-                        <h2 id="goal-keeping-track-of-the-players-motion">Goal: Keeping Track of the Players Motion</h2>
+                        <h1></h1>
+                        <h3 id="task-a-creating-gravitational-behaviour">Task A: Creating Gravitational Behaviour</h3>
+<h4 id="goal-keeping-track-of-the-players-motion">Goal: Keeping Track of the Players Motion</h4>
 <p>Crafty has a <code>Gravity</code> component in the library, but because we are using our own movement system we’re not going to use it. Instead we will be creating a simplified semblance of gravity’s behaviour. To do this we’re going to create two variable at the top of our JavaScript:</p>
 <pre><code class="lang-javascript">var playerVel = 0; // Used to keep track of player&#39;s vertical speed and direction.
 var g = 0.5; // Creating a value which we can reference as the acceleration caused by our gravity
