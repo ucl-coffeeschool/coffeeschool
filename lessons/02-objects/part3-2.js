@@ -11,6 +11,9 @@ var objectWidth = 2 * playerSize;
 // Obstacle Counter 
 var obstacleCounter = 0;
 
+// Sets the background colour
+Crafty.background("#ADD8E6");
+
 // Create the ground!
 Crafty.e("Solid, 2D, DOM, Color")
     .attr({x: 0,
@@ -41,13 +44,15 @@ Crafty.e("2D, DOM, Color") // Specifying the components to add
                 this.x -= 3;
             }
 
+        });
+
         if(obstacleCounter > 100){
             obstacleCounter = 0;
             newObstacle();
         }
 
         obstacleCounter++;
-
+        
     });
 
 function newObstacle()

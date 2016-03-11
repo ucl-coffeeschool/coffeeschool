@@ -41,3 +41,11 @@ To destroy the object when it's not visible we need to remove it when its `x` po
 ```
 
 With this the game should start generating obstacles and moving them across the screen. *Why don't you try it out and see what happens?*
+
+Now that we've got our ground and obstacles we can "pretty up" our game a smidge by setting a background colour for crafty. We can set the Crafty's background using `Crafty.background();` before we create our entities (like the ground, player and obstacles).
+
+To set the background to a light blue colour we can add the following code after our variables but before our entities:
+
+```javascript
+Crafty.background("#ADD8E6");
+```

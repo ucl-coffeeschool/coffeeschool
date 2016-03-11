@@ -31,11 +31,21 @@
     {
         "name": "part2-4",
         "nameNice": "Creating Obstacles at set Intervals",
-        "description": "Using a counter to create obstacles at a fixed rate"
+        "description": "Adding a counter and using it to create obstacles at a fixed rate"
     },
     {
         "name": "part2-5",
         "nameNice": "Moving the Obstacles!",
         "description": "Here you will add code to the game loop to move obstacles across the screen and destroy them if they go off the screen" 
+    },
+    {
+        "name": "part3-1",
+        "nameNice": "Detecting Collisions With the Player",
+        "description": "We briefly discuss how we're going to detect collisions and use it to make the game properly playable"
+    },
+    {
+        "name": "part3-2",
+        "nameNice": "Adding Collision Component and Checking for Hits",
+        "description": "Adding the collision component to the player and checking for hits with the ground and obstacles. The game will freeze if a hit happens."
     }]
 }
