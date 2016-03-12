@@ -254,12 +254,12 @@ canvas#game-preview {
   background: #a1aebc;
   display: block; }
 
-#nextLesson {
+#nextLesson, #sectionButton {
   opacity: 0;
   width: 0;
   height: 0;
   transition: opacity 0.25s ease-in-out; }
-  #nextLesson.lessonComplete {
+  #nextLesson.lessonComplete, #sectionButton.lessonComplete {
     opacity: 1;
     width: auto;
     height: auto; }

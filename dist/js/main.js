@@ -68,25 +68,25 @@ if ($('#codeEditor').length) {
         Crafty.init(300, 150, document.getElementById("game-container"));
         eval(editor.getValue());
 
-        $('#nextLesson').addClass('lessonComplete');
-        $('#nextLesson i').removeClass('fa-arrow-right').addClass('fa-spin fa-spinner');
+        $('#nextLesson, #sectionButton').addClass('lessonComplete');
+        $('#nextLesson i, #sectionButton i').removeClass('fa-arrow-right').addClass('fa-spin fa-spinner');
         //$('#nextLesson').onClick(nextLesson());
-        $('#nextLesson').prop('disabled', true);
+        $('#nextLesson, #sectionButton').prop('disabled', true);
         $('.nagbar').slideUp(500);
 
         setTimeout(function () {
             switch (codeTest()) {
                 case "true":
-                    $('#nextLesson i').removeClass('fa-spin fa-spinner').addClass('fa-arrow-right');
-                    $('#nextLesson').prop('disabled', false);
+                    $('#nextLesson i, sectionButton i').removeClass('fa-spin fa-spinner').addClass('fa-arrow-right');
+                    $('#nextLesson, #sectionButton').prop('disabled', false);
                     $('.overlay').fadeIn(200);
                     break;
                 case "notest":
-                    $('#nextLesson i').removeClass('fa-spin fa-spinner').addClass('fa-arrow-right');
-                    $('#nextLesson').prop('disabled', false);
+                    $('#nextLesson i, #sectionButton i').removeClass('fa-spin fa-spinner').addClass('fa-arrow-right');
+                    $('#nextLesson, #sectionButton').prop('disabled', false);
                     break;
                 case "false":
-                    $('#nextLesson').removeClass('lessonComplete');
+                    $('#nextLesson, #sectionButton').removeClass('lessonComplete');
                     $('.nagbar').slideDown(500);
                     break;
             }
