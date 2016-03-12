@@ -138,3 +138,14 @@ $('.container,footer,header h1,nav a').click(function () {
         setMenuButtonIcon();
     }
 });
+
+function arraysEqual(arr1, arr2) {
+    if (arr1.length !== arr2.length)
+        return false;
+    for (var i = arr1.length; i--;) {
+        if (arr1[i].toString().toLowerCase() !== arr2[i].toString().toLowerCase())
+            return false;
+    }
+
+    return true;
+}
