@@ -1,7 +1,7 @@
 function codeTest() {
     var results = [];
     consoleOut.forEach(function (el, ind, arr) {
-        if(/true/.test(el.toLowerCase()))
+        if(/true/.test(el.toString().toLowerCase()))
             results.push(true);
         else
             results.push(false);

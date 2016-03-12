@@ -45,7 +45,8 @@
                         <button id="nextLesson" onClick="window.location = 'section-The Player-lesson-part2-1.html'"><i class="fa fa-arrow-right"></i> Next Lesson</button>
                         </h2>
 
-                <div id="codeEditor"></div>
+                <div id="codeEditor">// add your crafty code here.
+</div>
             </div>
             <div class="flex-container div-half">
                 <div class="flex-container">
@@ -65,10 +66,11 @@
 <p>This uses Crafty’s <code>.e</code> method to create an entity with the components “2D”, “DOM” and “Color”. Adding components to an entity in Crafty enables you to give it extra behaviour or functionality. 2D allows us to place the entity in the game’s view, while Color is used to draw coloured rectangles.</p>
 <p>To create the rectangle on the screen we extend the entity with the following code:</p>
 <pre><code class="lang-javascript">Crafty.e(&quot;2D, DOM, Color&quot;) // Creating the entity and adding components
-    .attr({x: 30, y: 30, w: 10, h: 10}) // Specifying point to draw from (x,y) and dimensions to use 
+    .attr({x: 30, y: 30, w: 10, h: 10}) // Specifying point to draw from (x,y) and dimensions to use
     .color(&quot;#ff0000&quot;); // Specifying the colour and drawing the rectangle
 </code></pre>
 <p>This produces a <em>red</em> rectangle, drawn 30 pixels down and 30 pixels across from the <em>top-left</em> of the scene. We have specified the rectangle’s width and height as 10 pixels.</p>
+<p>So, what are you waiting for? Create a <code>blue</code> box which is 40 units wide and 40 units tall! (P.S., blue = <code>#0000ff</code>)</p>
 
                     </div>
                 </div>
@@ -78,12 +80,19 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script defer>
-        $(document).ready(function() {
-    $('#nextLesson').addClass("lessonComplete");
-});
-
-var codeTest = function() {
-    return "notest";
+        function codeTest() {
+    var children = $('#game-container div').children();
+    if (children) {
+        if ($(children[0]).css('background-color') === 'rgb(0, 0, 255)') {
+            return "true";
+        }
+        else {
+            return "false";
+        }
+    }
+    else {
+        return "false";
+    }
 }
 
     </script>

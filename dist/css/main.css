@@ -1,4 +1,6 @@
-html, body {
+@import url(https://fonts.googleapis.com/css?family=Karla:400,700,400italic,700italic);
+html,
+body {
   height: 100%;
   margin: 0;
   font-family: "Karla", Helvetica, sans-serif;
@@ -77,10 +79,11 @@ nav {
         background: #35404A;
         color: #DCE1E6; }
   .main .container {
-    width: 100%;
+    width: calc(100% - 1rem);
     flex: 1 1 auto;
     display: flex;
-    flex-flow: row; }
+    flex-flow: row;
+    overflow-x: hidden; }
     .main .container.noflex {
       display: block;
       padding: 0.5rem; }
@@ -98,7 +101,8 @@ nav {
         margin-bottom: 1rem; }
         .main .container ol.lessons li:before {
           counter-increment: li; }
-        .main .container ol.lessons li:before, .main .container ol.lessons li a {
+        .main .container ol.lessons li:before,
+        .main .container ol.lessons li a {
           content: counter(li);
           color: #164666;
           font-size: 2rem;
@@ -132,7 +136,7 @@ nav {
       border: 2px solid #6d2b00;
       border-width: 1px 1px 3px 1px;
       border-radius: 3px;
-      bottom: 0px;
+      bottom: 0;
       position: relative;
       transition: background 0.1s ease-in-out, border-width 0.1s ease-in-out; }
       .main .flex-container button:hover {
@@ -147,7 +151,9 @@ nav {
       .main .flex-container button:disabled {
         color: #e1e1e1;
         background: #6a6a6a; }
-    .main .flex-container h1, .main .flex-container h2, .main .flex-container h3 {
+    .main .flex-container h1,
+    .main .flex-container h2,
+    .main .flex-container h3 {
       flex: 0 0 auto; }
     .main .flex-container * {
       align-self: stretch; }
@@ -193,7 +199,7 @@ section p {
 
 .nagbar {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   z-index: 5;
   width: 100%;
@@ -226,10 +232,12 @@ section p {
   height: 100%;
   left: 0;
   top: 0; }
-  .overlay h1, .overlay h2, .overlay a {
+  .overlay h1,
+  .overlay h2,
+  .overlay a {
     background-color: #d35400;
     color: #DCE1E6;
-    margin: 0rem; }
+    margin: 0; }
   .overlay h1 {
     font-size: 4rem; }
   .overlay h2 {

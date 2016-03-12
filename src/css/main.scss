@@ -1,380 +1,343 @@
 // style colours. Try to use these as much as possible
 @import url(https://fonts.googleapis.com/css?family=Karla:400,700,400italic,700italic);
-$color-text:#35404A;
-$color-bg:#DCE1E6;
-//$color-primary:#16a085;
+$color-text: #35404A;
+$color-bg: #DCE1E6; //$color-primary:#16a085;
 $color-primary: #2980b9;
-$color-primary-dark:darken($color-primary,20);
-//$color-secondary:#f39c12;
+$color-primary-dark: darken($color-primary,20); //$color-secondary:#f39c12;
 $color-secondary: #d35400;
-$color-danger:#e74c3c;
-$color-secondary-dark:darken($color-secondary,20);
-
+$color-danger: #e74c3c;
+$color-secondary-dark: darken($color-secondary,20);
 // fonts
-$font-mono:"Source Code Pro",Monaco,monospace;
+$font-mono: "Source Code Pro",Monaco,monospace;
 $font-standard: "Karla", Helvetica, sans-serif;
-
 // measures
-$measure-header-height:3rem;
-$measure-nav-width:20rem;
-$measure-navitem-height:3rem;
-
-html,body {
-    height:100%;
-    margin:0;
-    font-family:$font-standard;
-    overflow:hidden;
+$measure-header-height: 3rem;
+$measure-nav-width: 20rem;
+$measure-navitem-height: 3rem;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: $font-standard;
+    overflow: hidden;
     // stop pesky child elements from fiddling with layout.
-    overflow:hidden;
-    padding-top:1px;
-    margin-top:-1px;
-    color:$color-text;
-    background:$color-bg;
+    overflow: hidden;
+    padding-top: 1px;
+    margin-top: -1px;
+    color: $color-text;
+    background: $color-bg;
 }
 nav {
-    position:absolute;
-    left:-$measure-nav-width;
-    width:$measure-nav-width;
-    height:100%;
+    position: absolute;
+    left: -$measure-nav-width;
+    width: $measure-nav-width;
+    height: 100%;
     overflow-y: auto;
-    top:0;
-    background:$color-primary-dark;
-    transition:left 0.25s ease-in-out;
-
+    top: 0;
+    background: $color-primary-dark;
+    transition: left 0.25s ease-in-out;
     &.active {
-        left:0;
+        left: 0;
     }
-
     a {
-        width:calc(100% - 2rem);
-        display:block;
-        height:$measure-navitem-height;
-        line-height:$measure-navitem-height;
-        padding:0 1rem;
-        text-decoration:none;
-        color:$color-bg;
-        background:none;
-        transition:background 0.25s ease-in-out;
+        width: calc(100% - 2rem);
+        display: block;
+        height: $measure-navitem-height;
+        line-height: $measure-navitem-height;
+        padding: 0 1rem;
+        text-decoration: none;
+        color: $color-bg;
+        background: none;
+        transition: background 0.25s ease-in-out;
         &:hover {
-            background:$color-primary;
+            background: $color-primary;
         }
     }
 }
-
 .main {
-    width:100%;
-    height:100%;
-    position:absolute;
-    left:0;
-    top:0;
-    transition:left 0.25s ease-in-out;
-    overflow:auto;
-    display:flex;
-    flex-flow:column;
-
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: left 0.25s ease-in-out;
+    overflow: auto;
+    display: flex;
+    flex-flow: column;
     &.active {
-        left:$measure-nav-width;
+        left: $measure-nav-width;
     }
-
     header {
-        height:$measure-header-height;
-        background:$color-primary;
-        color:$color-bg;
-        overflow:hidden;
-        display:block;
-        flex:0 0 auto;
-
+        height: $measure-header-height;
+        background: $color-primary;
+        color: $color-bg;
+        overflow: hidden;
+        display: block;
+        flex: 0 0 auto;
         em {
-            color:rgba($color-bg,0.7);
-            font-style:normal;
+            color: rgba($color-bg,0.7);
+            font-style: normal;
         }
-
         * {
-            display:inline-block;
-            vertical-align:top;
-            margin:0 0.5rem 0 0;
-            height:$measure-header-height;
-            line-height:$measure-header-height;
-            font-size:2rem;
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 0.5rem 0 0;
+            height: $measure-header-height;
+            line-height: $measure-header-height;
+            font-size: 2rem;
         }
-
         #menu-button {
-            background:rgba($color-text,0.3);
-            transition:background 0.25s ease-in-out,
-            color 0.25s ease-in-out;
-            color:$color-bg;
-            width:$measure-header-height;
-            font-size:$measure-header-height;
-            text-align:center;
-            cursor:pointer;
+            background: rgba($color-text,0.3);
+            transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
+            color: $color-bg;
+            width: $measure-header-height;
+            font-size: $measure-header-height;
+            text-align: center;
+            cursor: pointer;
             i {
-                vertical-align:top;
-                margin:0;
+                vertical-align: top;
+                margin: 0;
             }
-
             &:hover {
-                background:$color-text;
-                color:$color-bg;
+                background: $color-text;
+                color: $color-bg;
             }
         }
     }
-
     .container {
         &.noflex {
-            display:block;
-            padding:0.5rem;
+            display: block;
+            padding: 0.5rem;
         }
-
-        width:100%;
-        flex:1 1 auto;
-        display:flex;
-        flex-flow:row;
-
+        width: calc(100% - 1rem);
+        flex: 1 1 auto;
+        display: flex;
+        flex-flow: row;
+        overflow-x: hidden;
         ol.lessons {
-            display:flex;
-            flex-direction:row;
+            display: flex;
+            flex-direction: row;
             flex-wrap: wrap;
             counter-reset: li;
-            padding:0;
-
+            padding: 0;
             li {
-                width:50%;
-                flex:0 0 auto;
+                width: 50%;
+                flex: 0 0 auto;
                 //list-style-position:inside;
-                list-style:none;
-                line-height:1.5rem;
+                list-style: none;
+                line-height: 1.5rem;
                 &:before {
                     counter-increment: li;
                 }
-                &:before, a {
+                &:before,
+                a {
                     content: counter(li);
-                    color:$color-primary-dark;
-                    font-size:2rem;
-                    margin-right:0.25rem;
+                    color: $color-primary-dark;
+                    font-size: 2rem;
+                    margin-right: 0.25rem;
                 }
-                margin-bottom:1rem;
+                margin-bottom: 1rem;
             }
         }
     }
-
     .div-half {
-        padding:10px;
-        width:calc(50% - 20px);
-        flex:0 0 auto;
-        display:flex;
+        padding: 10px;
+        width: calc(50% - 20px);
+        flex: 0 0 auto;
+        display: flex;
     }
-
     .div-content {
-        overflow-y:auto;
-        flex:1 1 auto;
+        overflow-y: auto;
+        flex: 1 1 auto;
     }
-
     .flex-container {
-        margin:0;
-        display:flex;
-        min-width:0;
-        flex-flow:column;
-        align-items:stretch;
+        margin: 0;
+        display: flex;
+        min-width: 0;
+        flex-flow: column;
+        align-items: stretch;
         i > * {
-            height:0;
+            height: 0;
         }
         div {
-            flex:1 1 auto;
+            flex: 1 1 auto;
         }
         button {
-            display:inline;
-            font-size:1rem;
-            flex-shrink:0;
-            align-self:flex-end;
-            vertical-align:top;
-            background:$color-secondary;
-            color:$color-bg;
-            border:2px solid $color-secondary-dark;
-            border-width:1px 1px 3px 1px;
-            border-radius:3px;
-            bottom:0px;
-            position:relative;
-            transition:background 0.1s ease-in-out, border-width 0.1s ease-in-out;
-
+            display: inline;
+            font-size: 1rem;
+            flex-shrink: 0;
+            align-self: flex-end;
+            vertical-align: top;
+            background: $color-secondary;
+            color: $color-bg;
+            border: 2px solid $color-secondary-dark;
+            border-width: 1px 1px 3px 1px;
+            border-radius: 3px;
+            bottom: 0;
+            position: relative;
+            transition: background 0.1s ease-in-out, border-width 0.1s ease-in-out;
             &:hover {
-                background:lighten($color-secondary,20);
-                border-width:1px 1px 4px 1px;
-                bottom:1px;
+                background: lighten($color-secondary,20);
+                border-width: 1px 1px 4px 1px;
+                bottom: 1px;
             }
-
             &:active {
-                border-width:4px 1px 1px 1px;
-                background:darken($color-secondary-dark,10);
+                border-width: 4px 1px 1px 1px;
+                background: darken($color-secondary-dark,10);
             }
-
             &:focus {
-                outline:none;
+                outline: none;
             }
-
             &:disabled {
-                color:grayscale($color-bg);
-                background:grayscale($color-secondary);
+                color: grayscale($color-bg);
+                background: grayscale($color-secondary);
             }
         }
-        h1,h2,h3 {
-            flex:0 0 auto;
+        h1,
+        h2,
+        h3 {
+            flex: 0 0 auto;
         }
         * {
-            align-self:stretch;
+            align-self: stretch;
         }
     }
 }
-
 a.button {
-    padding:0.3rem 0.5rem;
-    border:1px $color-text solid;
-    color:$color-text;
-    text-decoration:none;
-    font-size:1.4rem;
-    border-radius:1rem;
-    background-color:transparent;
-    transition:background-color 0.25s ease-in-out,
-    color 0.25s ease-in-out;
-
+    padding: 0.3rem 0.5rem;
+    border: 1px $color-text solid;
+    color: $color-text;
+    text-decoration: none;
+    font-size: 1.4rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
     &:hover {
-        background-color:$color-text;
-        color:$color-bg;
+        background-color: $color-text;
+        color: $color-bg;
     }
 }
-
 a {
-    color:$color-text;
+    color: $color-text;
 }
-
 section h2 {
-    margin:0.5rem 0;
+    margin: 0.5rem 0;
 }
 section p {
-    margin:0.5rem 0;
+    margin: 0.5rem 0;
 }
-
 .closeButton {
-    position:absolute;
-    right:0;
-    top:0;
-    font-size:3rem;
-    padding:5px;
-    color:rgba($color-bg,0.7);
-    text-align:center;
-    vertical-align:middle;
-    cursor:pointer;
-    transition:background-color 0.25s ease-in-out,
-    color 0.25s ease-in-out;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 3rem;
+    padding: 5px;
+    color: rgba($color-bg,0.7);
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
     i {
-        width:3rem;
+        width: 3rem;
     }
-
     &:hover {
-        color:$color-text;
-        background-color:rgba($color-bg,0.4);
+        color: $color-text;
+        background-color: rgba($color-bg,0.4);
     }
 }
-
 .nagbar {
-    position:absolute;
-    bottom:0;
-    left:0;
-    z-index:5;
-    width:100%;
-    padding:5px;
-    height:1.5rem;
-    line-height:1rem;
-    color:$color-bg;
-    background-color:$color-danger;
-    vertical-align:middle;
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    padding: 5px;
+    height: 1.5rem;
+    line-height: 1rem;
+    color: $color-bg;
+    background-color: $color-danger;
+    vertical-align: middle;
     * {
-        display:inline-block;
-        line-height:1.5rem;
-        margin:0;
+        display: inline-block;
+        line-height: 1.5rem;
+        margin: 0;
     }
-
     .fa-close {
-        float:right;
-        width:1rem;
-        height:1rem;
-        margin-right:1rem;
-        cursor:pointer;
+        float: right;
+        width: 1rem;
+        height: 1rem;
+        margin-right: 1rem;
+        cursor: pointer;
     }
 }
-
 .overlay {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    position:absolute;
-    z-index:10;
-    background:rgba($color-text,0.6);
-    width:100%;
-    height:100%;
-    left:0; top:0;
-
-    h1,h2,a {
-        background-color:$color-secondary;
-        color:$color-bg;
-        margin:0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    background: rgba($color-text,0.6);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    h1,
+    h2,
+    a {
+        background-color: $color-secondary;
+        color: $color-bg;
+        margin: 0;
     }
     h1 {
-        font-size:4rem;
+        font-size: 4rem;
     }
     h2 {
-        font-size:2rem;
+        font-size: 2rem;
     }
     a {
-        font-size:2rem;
+        font-size: 2rem;
     }
 }
-
 #game-container {
-    min-width:300px;
-    min-height:150px;
-    border:0.1rem $color-text solid;
+    min-width: 300px;
+    min-height: 150px;
+    border: 0.1rem $color-text solid;
 }
-
 canvas#game-preview {
-    background:darken($color-bg,20);
-    display:block;
+    background: darken($color-bg,20);
+    display: block;
 }
-
 #nextLesson {
     &.lessonComplete {
-        opacity:1;
-        width:auto;
-        height:auto;
+        opacity: 1;
+        width: auto;
+        height: auto;
     }
-    opacity:0;
-    width:0;
-    height:0;
-    transition:opacity 0.25s ease-in-out;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: opacity 0.25s ease-in-out;
 }
-
 #log-div {
-    border:2px solid darken($color-bg,20);
-    background-color:darken($color-bg,10);
-    font-family:$font-mono;
-    min-height:2rem;
-    max-height:10rem;
+    border: 2px solid darken($color-bg,20);
+    background-color: darken($color-bg,10);
+    font-family: $font-mono;
+    min-height: 2rem;
+    max-height: 10rem;
     p {
-        padding:2px 5px;
-        margin:0;
+        padding: 2px 5px;
+        margin: 0;
         &:nth-of-type(2n) {
-            background-color:darken($color-bg,5);
+            background-color: darken($color-bg,5);
         }
     }
 }
-
 #codeEditor * {
-    flex:none;
+    flex: none;
 }
-
 #syntax-msg {
-    margin-left:0.25rem;
-    font-size:1rem;
-    color:rgba($color-text,0.5);
+    margin-left: 0.25rem;
+    font-size: 1rem;
+    color: rgba($color-text,0.5);
 }
