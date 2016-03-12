@@ -1,0 +1,21 @@
+{
+    "name": "Using Game States",
+    "nameNice": "Padding out the Game Using Game States",
+    "descriptionShort": "This section looks at creating a set of states and using score to make the game feel more polished.",
+    "description": "This section looks at creating a start screen, a game over screen and keeping track of the player's score each game.",
+    "lessons": [{
+        "name": "part1-1",
+        "nameNice": "Introduction",
+        "description": "Introduction to game states and their representation in Crafty."
+    },
+    {
+        "name": "part1-2",
+        "nameNice": "Defining a Start and Game Scene",
+        "description": "Here you will place your game code into its own game state and start the game by loading a start screen"
+    },
+    {
+        "name": "part1-3",
+        "nameNice": "Filling the Start Screen With Graphics",
+        "description": "In this part of the lesson you will fill your start screen with some graphics and let the player launch the game from it!" 
+    }]
+}
