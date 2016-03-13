@@ -15,6 +15,6 @@ else {
 }
 ```
 
-Let's try this now. We're going to give you a list of numbers, `numbers`, and if they are **greater than 10** then return `true`, otherwise return `false`. Good luck!
+Let's try this now. We're going to give you a list of numbers, `numbers`, and if they are **greater than 10** then print `true`, otherwise print `false`. Good luck!
 
 P.S.: We're using a loop to go through each number. You can access the current number with `numbers[number]`.

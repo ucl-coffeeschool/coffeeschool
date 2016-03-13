@@ -308,7 +308,7 @@ canvas#game-preview {
     background: darken($color-bg,20);
     display: block;
 }
-#nextLesson {
+#nextLesson, #sectionButton {
     &.lessonComplete {
         opacity: 1;
         width: auto;

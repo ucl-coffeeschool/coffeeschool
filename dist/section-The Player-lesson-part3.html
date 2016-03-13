@@ -42,7 +42,7 @@
         <div class="container">
             <div class="flex-container div-half">
                 <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span>
-                        <button onClick="window.location = 'sections.html'"><i class="fa fa-home"></i> Sections</button></h2>
+                        <button id="sectionButton" onClick="window.location = 'sections.html'"><i class="fa fa-home"></i> Sections</button></h2>
 
                 <div id="codeEditor">// Create the variables to track player movement 
 var playerVel = 0; // Stores the player&#x27;s velocity
@@ -99,7 +99,7 @@ Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script defer>
         $(document).ready(function() {
-    $('#nextLesson').addClass("lessonComplete");
+    $('#nextLesson, #sectionButton').addClass("lessonComplete");
 });
 
 var codeTest = function() {

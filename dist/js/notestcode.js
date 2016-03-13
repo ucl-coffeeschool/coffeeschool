@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#nextLesson').addClass("lessonComplete");
+    $('#nextLesson, #sectionButton').addClass("lessonComplete");
 });
 
 var codeTest = function() {
