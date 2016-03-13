@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Lesson 4 - Coffee School</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    <script src="js/prism.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <!-- nav stuff. -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sections.html" class="active">Sections</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="nagbar" style="display:none">
+        <p>Your code doesn't seem to do what we're looking for. Check it and try again!</p>
+        <i class="fa fa-close"></i>
+    </div>
+
+    <!-- Main content. -->
+    <div class="overlay" style="display:none">
+        <span class="closeButton"><i class="fa fa-close"></i></span>
+            <h1>Lesson completed!</h1>
+            <h2>Give yourself a pat on the back.</h2>
+            <a href="section-Environment and Obstacles-lesson-part2-3.html">Next lesson!</a>
+    </div>
+    <div class="main">
+        <header>
+            <div id="menu-button"><i class="fa fa-bars"></i></div>
+            <h1>Coffee School <i class="fa fa-code"></i><em></em></h1>
+        </header>
+        <div class="container">
+            <div class="flex-container div-half">
+                <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span>
+                        <button id="nextLesson" onClick="window.location = 'section-Environment and Obstacles-lesson-part2-3.html'"><i class="fa fa-arrow-right"></i> Next Lesson</button>
+                        </h2>
+
+                <div id="codeEditor">// Creating environment variables
+var playerSize = 10;
+var sceneWidth = 300, sceneHeight = 150;
+var groundHeight = 10;
+var playAreaHeight = (sceneHeight - groundHeight);
+// Create the variables to track player movement 
+var playerVel = 0; // Stores the player&#x27;s velocity
+var g = 0.4;       // The constant acceleration cause by &quot;gravity&quot;
+
+// Create the ground!
+Crafty.e(&quot;Solid, 2D, DOM, Color&quot;)
+    .attr({x: 0,
+           y: playAreaHeight,
+           w: sceneWidth,
+           h: groundHeight})
+    .color(&quot;#00ff00&quot;);
+
+// Create our player&#x27;s base entity
+Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
+    .attr({x: 30, y: 30, w: playerSize, h: playerSize}) // Specifying the dimensions and the point to draw from
+    .color(&quot;#ff0000&quot;) // Specifying the colour of the rectangle
+    .bind(&quot;EnterFrame&quot;, function() { // Binds the &quot;EnterFrame&quot; event to the entity
+        playerVel += g; // Adds the &quot;gravitational acceleration&quot; to the player&#x27;s velocity 
+        this.y += playerVel; // Change the player entities y position based on the player velocity
+    })
+    .bind(&quot;KeyDown&quot;, function(event) { // Binds the &quot;KeyDown&quot; event to our player entity
+        if(event.key == Crafty.keys.SPACE){ // If the key is the spacebar then &quot;flap&quot; 
+            playerVel = -5; // Sets the player&#x27;s speed and direction to go upwards     
+        }
+    });
+</div>
+            </div>
+            <div class="flex-container div-half">
+                <div class="flex-container">
+                    <h2>Preview</h2>
+                    <div class="div-content" id="game-container">
+                    </div>
+                    <h2>Console Log:</h2>
+                    <div class="div-content" id="log-div"> </div>
+                    <div class="div-content">
+                        <h1></h1>
+                        <h2 id="task-a-generating-obstacles">Task A: Generating Obstacles</h2>
+<h3 id="goal-create-the-obstacle-generation-function-and-make-some-variables">Goal: Create the obstacle generation function and make some variables</h3>
+<p>To create our obstacles we’re going to use a function which creates a pair of entities based around a random mid point. Let’s create a function and call it <code>newObstacle</code>:</p>
+<pre><code class="lang-javascript">function newObstacle()
+{
+    // Woosh! An obstacle will be generated here later on.
+}
+</code></pre>
+<p>Now before we write any of the code to create our entities it’s worth thinking about the kind of obstacles that you want to make for this style of game. Normally there is a separated “pipe” of some kind, which acts like a wall with a hole in it at a certain point. Where the hole is located is usually fairly random so we’ll start by making the location of the hole in the obstacle! Let’s create a variable in our function so that we can reference our random value when creating both entities:</p>
+<pre><code class="lang-javascript">function newObstacle()
+{
+    var randomHeight = Math.floor((Math.random() * (sceneHeight/2)) + (sceneHeight/3));
+}
+</code></pre>
+<p>Whew… that was a long variable declaration! <em>Let’s break it down and see what we’re doing.</em> </p>
+<ol>
+<li>We start of with <code>Math.floor()</code>, wrapping the rest of our calculation in it. This piece of code uses the JavaScript <code>Math</code> object’s <code>floor()</code> method to round our calculation <strong>down</strong> to the nearest integer value, which is important when working with pixels!</li>
+<li>We then multiply <code>Math.random()</code> by the half the value of the <code>sceneHeight</code> variable we declared earlier. <code>Math.random()</code> again uses the <code>Math</code> object and generates a value between 0 and up to (not including) 1. This means we get a height value somewhere between 0 and half the height of the scene.</li>
+<li>Adding the value of <code>sceneHeight</code> divided by 3 gives the object some guaranteed room from the edge of the scene, so that we don’t get the hole in the obstacle right at the bottom of our game scene.</li>
+</ol>
+<p>Now that we have the <code>randomHeight</code> variable being created we can use it to create two variables for our obstacles: The <code>bottomOfTopHalf</code> and <code>topOfBottomHalf</code> which respectively are the values for the bottom of the top part of the obstacle and the top of the bottom half of the obstacle.</p>
+<p>Creating the bottom of the top half we will use the <code>playAreaHeight</code> and the <code>randomHeight</code> value that we have calculated, as well as the <code>playerSize</code>.</p>
+<pre><code class="lang-javascript">var bottomOfTopHalf = playAreaHeight - randomHeight;
+</code></pre>
+<p>This variable uses the <code>playAreaHeight</code> and makes the bottom of the top part at the point of the random height we calculated away from the ground.</p>
+<p>For the top of the bottom half we will use what we just calculated and then add a multiple of the player size to size the gap. For this example I’m going to use 4, but you should try some different later on and see what happens!</p>
+<pre><code class="lang-javascript">var topOfBottomHalf = bottomOfTopHalf + (4 * playerSize);
+</code></pre>
+<p>At this point your <code>newObstacle()</code> function should look something like this:</p>
+<pre><code class="lang-javascript">function newObstacle()
+{
+    var randomHeight = Math.floor((Math.random() * (sceneHeight/2)) + (sceneHeight/3));
+    var bottomOfTopHalf = playAreaHeight - (randomHeight - playerSize);
+    var topOfBottomHalf = bottomOfTopHalf + (4 * playerSize);
+}
+</code></pre>
+<p>The last variable we’re going to make is the <code>objectWidth</code>, which we’ll place at the top of our JavaScript (but below <code>playerSize</code>). For now try setting it to twice the <code>playerSize</code>.</p>
+<pre><code class="lang-javascript">var objectWidth = 2 * playerSize;
+</code></pre>
+<p>With our object value variables set up we’re now ready to create the entities.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script defer>
+        $(document).ready(function() {
+    $('#nextLesson').addClass("lessonComplete");
+});
+
+var codeTest = function() {
+    return "notest";
+}
+
+    </script>
+    <!-- Editor (ace) -->
+
+    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

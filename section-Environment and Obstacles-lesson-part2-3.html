@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Lesson 5 - Coffee School</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    <script src="js/prism.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <!-- nav stuff. -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sections.html" class="active">Sections</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="nagbar" style="display:none">
+        <p>Your code doesn't seem to do what we're looking for. Check it and try again!</p>
+        <i class="fa fa-close"></i>
+    </div>
+
+    <!-- Main content. -->
+    <div class="overlay" style="display:none">
+        <span class="closeButton"><i class="fa fa-close"></i></span>
+            <h1>Lesson completed!</h1>
+            <h2>Give yourself a pat on the back.</h2>
+            <a href="section-Environment and Obstacles-lesson-part2-4.html">Next lesson!</a>
+    </div>
+    <div class="main">
+        <header>
+            <div id="menu-button"><i class="fa fa-bars"></i></div>
+            <h1>Coffee School <i class="fa fa-code"></i><em></em></h1>
+        </header>
+        <div class="container">
+            <div class="flex-container div-half">
+                <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span>
+                        <button id="nextLesson" onClick="window.location = 'section-Environment and Obstacles-lesson-part2-4.html'"><i class="fa fa-arrow-right"></i> Next Lesson</button>
+                        </h2>
+
+                <div id="codeEditor">// Creating environment variables
+var playerSize = 10;
+var sceneWidth = 300, sceneHeight = 150;
+var groundHeight = 10;
+var playAreaHeight = (sceneHeight - groundHeight);
+// Create the variables to track player movement 
+var playerVel = 0; // Stores the player&#x27;s velocity
+var g = 0.4;       // The constant acceleration cause by &quot;gravity&quot;
+// Object Width!
+var objectWidth = 2 * playerSize;
+
+// Create the ground!
+Crafty.e(&quot;Solid, 2D, DOM, Color&quot;)
+    .attr({x: 0,
+           y: playAreaHeight,
+           w: sceneWidth,
+           h: groundHeight})
+    .color(&quot;#00ff00&quot;);
+
+// Create our player&#x27;s base entity
+Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
+    .attr({x: 30, y: 30, w: playerSize, h: playerSize}) // Specifying the dimensions and the point to draw from
+    .color(&quot;#ff0000&quot;) // Specifying the colour of the rectangle
+    .bind(&quot;EnterFrame&quot;, function() { // Binds the &quot;EnterFrame&quot; event to the entity
+        playerVel += g; // Adds the &quot;gravitational acceleration&quot; to the player&#x27;s velocity 
+        this.y += playerVel; // Change the player entities y position based on the player velocity
+    })
+    .bind(&quot;KeyDown&quot;, function(event) { // Binds the &quot;KeyDown&quot; event to our player entity
+        if(event.key == Crafty.keys.SPACE){ // If the key is the spacebar then &quot;flap&quot; 
+            playerVel = -5; // Sets the player&#x27;s speed and direction to go upwards     
+        }
+    });
+
+function newObstacle()
+{
+    var randomHeight = Math.floor((Math.random() * (sceneHeight/2)) + (sceneHeight/3));
+    var bottomOfTopHalf = playAreaHeight - randomHeight;
+    var topOfBottomHalf = bottomOfTopHalf + (4 * playerSize);
+}
+</div>
+            </div>
+            <div class="flex-container div-half">
+                <div class="flex-container">
+                    <h2>Preview</h2>
+                    <div class="div-content" id="game-container">
+                    </div>
+                    <h2>Console Log:</h2>
+                    <div class="div-content" id="log-div"> </div>
+                    <div class="div-content">
+                        <h1></h1>
+                        <h3 id="goal-generating-the-obstacle-entities">Goal: Generating the obstacle entities</h3>
+<p>Now that we’ve created our variables <code>randomHeight</code>, <code>bottomOfTopHalf</code> and <code>topOfBottomHalf</code> we can use these to create entities in our <code>newObstacle()</code> function.</p>
+<p>Our obstacles are made up of two parts, the top and the bottom halves. So to create our obstacles we going to want to make both the top and bottom half as entities in our obstacle generation function!</p>
+<p>To create our obstacle halves we use similar components to the ground and the player, although we’re going to add our own component to the entities to act as a label! Let’s call this new component <code>Obstacle</code>.</p>
+<p>Using our variables we can create the top half of the obstacle. When we generate an obstacle we want to place it at the far right of the game screen so we’ll use <code>sceneWidth</code> for the <code>x</code> position. We’ll set the starting <code>y</code> position to 0 (the top of the screen). Our top half of the obstacle should be starting to look like this:</p>
+<pre><code class="lang-javascript">Crafty.e(&quot;Obstacle, 2D, DOM, Color, Solid&quot;)
+    .attr({x: sceneWidth,
+        y: 0,
+        ...
+</code></pre>
+<p>Next we need to specify the width, height and object colour! The variables we made earlier come in handy here. For our <code>w</code> property we can use our <code>objectWidth</code> variable, and for our <code>h</code> property we can use <code>bottomOfTopHalf</code> which we calculate from our <code>randomHeight</code> each time an object is made.</p>
+<p>For our colour we can just set a dark green for now, so once we’ve finished filling in the properties and drawing the coloured rectangle we should end up with something similar to the following:</p>
+<pre><code class="lang-javascript">Crafty.e(&quot;Obstacle, 2D, DOM, Color, Solid&quot;)
+    .attr({x: sceneWidth,
+        y: 0,
+        w: objectWidth,
+        h: bottomOfTopHalf})
+    .color(&quot;#003319&quot;);
+</code></pre>
+<p>Now that we have the top half of our obstacle generated we can move on to the bottom half!</p>
+<p>The bottom half is largely the same as the top half, but because it is at a different part of the vertical axis we need to use a different value for its starting <code>y</code> position and for the <code>h</code> property.</p>
+<p>The bottom half should have its <code>y</code> starting position at the value of the <code>topOfBottomHalf</code> variable, so that we have our gap in the middle of the obstacle. We can then use our <code>playAreaHeight</code> and this starting <code>y</code> position to give the <code>h</code> property of our bottom half.</p>
+<p>Try creating the bottom half of the obstacle now, but changing the <code>y</code> and <code>h</code> properties from the ones we used for the top half.</p>
+<p>Hint: <code>h: playAreaHeight - topOfBottomHalf</code></p>
+<p>Make sure that these entities are inside your obstacle generation function!</p>
+<p>What happens if you run the game now?</p>
+<p><em>Were any obstacles generated?</em></p>
+<p>If you notice, we haven’t actually <em>called</em> our function anywhere in our code yet! This is what we’ll work on in the next section, so make sure that you’ve understood what we’re doing in our <code>newObstacle()</code> function before moving on.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script defer>
+        $(document).ready(function() {
+    $('#nextLesson').addClass("lessonComplete");
+});
+
+var codeTest = function() {
+    return "notest";
+}
+
+    </script>
+    <!-- Editor (ace) -->
+
+    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

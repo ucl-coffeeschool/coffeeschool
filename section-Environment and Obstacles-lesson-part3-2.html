@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Lesson 9 - Coffee School</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    <script src="js/prism.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <!-- nav stuff. -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sections.html" class="active">Sections</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="nagbar" style="display:none">
+        <p>Your code doesn't seem to do what we're looking for. Check it and try again!</p>
+        <i class="fa fa-close"></i>
+    </div>
+
+    <!-- Main content. -->
+    <div class="overlay" style="display:none">
+        <span class="closeButton"><i class="fa fa-close"></i></span>
+            <h1>Section cleared!</h1>
+            <h2>You're a rockstar. Nice one you.</h2>
+            <a href="sections.html">View Sections</a>
+    </div>
+    <div class="main">
+        <header>
+            <div id="menu-button"><i class="fa fa-bars"></i></div>
+            <h1>Coffee School <i class="fa fa-code"></i><em></em></h1>
+        </header>
+        <div class="container">
+            <div class="flex-container div-half">
+                <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span>
+                        <button onClick="window.location = 'sections.html'"><i class="fa fa-home"></i> Sections</button></h2>
+
+                <div id="codeEditor">// Creating environment variables
+var playerSize = 10;
+var sceneWidth = 300, sceneHeight = 150;
+var groundHeight = 10;
+var playAreaHeight = (sceneHeight - groundHeight);
+// Create the variables to track player movement 
+var playerVel = 0; // Stores the player&#x27;s velocity
+var g = 0.4;       // The constant acceleration cause by &quot;gravity&quot;
+// Object width!
+var objectWidth = 2 * playerSize;
+// Obstacle Counter 
+var obstacleCounter = 0;
+
+// Sets the background colour
+Crafty.background(&quot;#ADD8E6&quot;);
+
+// Create the ground!
+Crafty.e(&quot;Solid, 2D, DOM, Color&quot;)
+    .attr({x: 0,
+           y: playAreaHeight,
+           w: sceneWidth,
+           h: groundHeight})
+    .color(&quot;#00ff00&quot;);
+
+// Create our player&#x27;s base entity
+Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
+    .attr({x: 30, y: 30, w: playerSize, h: playerSize}) // Specifying the dimensions and the point to draw from
+    .color(&quot;#ff0000&quot;) // Specifying the colour of the rectangle
+    .bind(&quot;EnterFrame&quot;, function() { // Binds the &quot;EnterFrame&quot; event to the entity
+        playerVel += g; // Adds the &quot;gravitational acceleration&quot; to the player&#x27;s velocity 
+        this.y += playerVel; // Change the player entities y position based on the player velocity
+    })
+    .bind(&quot;KeyDown&quot;, function(event) { // Binds the &quot;KeyDown&quot; event to our player entity
+        if(event.key == Crafty.keys.SPACE){ // If the key is the spacebar then &quot;flap&quot; 
+            playerVel = -5; // Sets the player&#x27;s speed and direction to go upwards     
+        }
+    })
+    .bind(&quot;EnterFrame&quot;, function() {
+        Crafty(&quot;Obstacle&quot;).each(function() {
+            if(this.x &lt; -objectWidth) {
+                this.destroy();
+            }
+            else {
+                this.x -= 3;
+            }
+
+        });
+
+        if(obstacleCounter &gt; 100){
+            obstacleCounter = 0;
+            newObstacle();
+        }
+
+        obstacleCounter++;
+        
+    });
+
+function newObstacle()
+{
+    var randomHeight = Math.floor((Math.random() * (sceneHeight/2)) + (sceneHeight/3));
+    var bottomOfTopHalf = playAreaHeight - randomHeight;
+    var topOfBottomHalf = bottomOfTopHalf + (4 * playerSize);
+
+    // Create the top half of the pipe
+    Crafty.e(&quot;Obstacle, 2D, DOM, Color, Solid&quot;)
+        .attr({x: sceneWidth,
+               y: 0,
+               w: objectWidth,
+               h: bottomOfTopHalf})
+        .color(&quot;#003319&quot;);
+
+    // Create the bottom half of the pipe
+    Crafty.e(&quot;Obstacle, 2D, DOM, Color, Solid&quot;)
+        .attr({x: sceneWidth,
+               y: topOfBottomHalf,
+               w: objectWidth,
+               h: playAreaHeight - topOfBottomHalf})
+        .color(&quot;#003319&quot;);
+}
+</div>
+            </div>
+            <div class="flex-container div-half">
+                <div class="flex-container">
+                    <h2>Preview</h2>
+                    <div class="div-content" id="game-container">
+                    </div>
+                    <h2>Console Log:</h2>
+                    <div class="div-content" id="log-div"> </div>
+                    <div class="div-content">
+                        <h1></h1>
+                        <h3 id="goal-adding-the-collision-component-and-checking-for-hits">Goal: Adding the collision component and checking for hits</h3>
+<p>To add the <code>Collision</code> component to our player entity we just add it to the list of components in the <code>.e</code> method.</p>
+<pre><code class="lang-javascript">Crafty.e(&quot;Collision, 2D, DOM, Color&quot;) // See how we just placed the Collision component here?
+        // rest of player here
+</code></pre>
+<p>The Crafty collision component provides two useful bits of functionality for us. We’re going to use a method <code>checkHits</code> which allows us to check for collisions with entities that have a given component, while binding the <code>HitOn</code> event to our player entitiy to execute some code when a collision is detected with entities using the given component.</p>
+<p>Let’s add <code>checkHits</code> to our player entity in between our <code>attr</code> and <code>color</code> properties, using it to check for collisions with all entities with the <code>Solid</code> component:</p>
+<pre><code class="lang-javascript">    .attr({ /* attr stuff here */ })
+    .checkHits(&quot;Solid&quot;)
+    .color(/* Color stuff here */);
+</code></pre>
+<p>Now that our player entity is checking for hits we can use the <code>HitOn</code> event binding to stop the game when the player collides with something! We bind the <code>HitOn</code> event just like the <code>EnterFrame</code> and <code>KeyDown</code> ones from earlier.</p>
+<pre><code class="lang-javascript">.bind(&quot;HitOn&quot;, function() {
+    Crafty.pause();
+})
+</code></pre>
+<p>For now, the game will just pause when a collision happens. We can’t do much else yet because we don’t have any other game states to move to. We now have the core bit of our game working and can move on to have things like a starting menu, score and a game over screen!</p>
+<p>For the starting menu and game over screen we will be using game states.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script defer>
+        $(document).ready(function() {
+    $('#nextLesson').addClass("lessonComplete");
+});
+
+var codeTest = function() {
+    return "notest";
+}
+
+    </script>
+    <!-- Editor (ace) -->
+
+    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
