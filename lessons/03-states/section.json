@@ -17,5 +17,15 @@
         "name": "part1-3",
         "nameNice": "Filling the Start Screen With Graphics",
         "description": "In this part of the lesson you will fill your start screen with some graphics and let the player launch the game from it!" 
+    },
+    {
+        "name": "part2-1",
+        "nameNice": "Creating the Game Over Screen",
+        "description": "Creating a \"GameOver\" scene with a message displayed on it and switching to the scene when the player loses the game" 
+    },
+    {
+        "name": "part2-2",
+        "nameNice": "Keeping Track of Score and Showing it to the Player",
+        "description": "This section focuses on creating a variable to hold the players score and updating their score when they successfully clear an obstacle"
     }]
 }
