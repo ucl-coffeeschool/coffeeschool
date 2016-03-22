@@ -57,6 +57,7 @@
                     <div class="div-content">
                         <h1>Variables</h1>
                         <p><em>Time to complete: 5 minutes</em></p>
+<p>##Goal: store a value in a variable and output it</p>
 <p>Being able to output the results of calculations or strings is great, but what if we want to store it and work with it? This is where variables come in. In JS, <code>var</code> lets you store any type of value, such as strings or numbers. Try it now:</p>
 <pre><code class="lang-javascript">var myName = &quot;Bob&quot;;
 var myAge = 14;
@@ -65,6 +66,7 @@ console.log(myName);
 console.log(myAge);
 </code></pre>
 <p>Remember to click ‘update’ once you’re done!</p>
+<p>Try storing ‘dog’ in a variable called animal and output it to continue.</p>
 
                     </div>
                 </div>
@@ -74,12 +76,11 @@ console.log(myAge);
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script defer>
-        $(document).ready(function() {
-    $('#nextLesson, #sectionButton').addClass("lessonComplete");
-});
-
-var codeTest = function() {
-    return "notest";
+        function codeTest() {
+    loggerdiv.innerHTML = '';
+    consoleOut = [];
+    eval(editor.getValue());
+    return (typeof(animal) === 'string' && animal === 'dog' && consoleOut[0] === 'dog')? "true" : "false";
 }
 
     </script>
