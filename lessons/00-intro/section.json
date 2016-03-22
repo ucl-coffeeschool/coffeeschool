@@ -30,8 +30,28 @@
     },
     {
         "name": "lesson6",
+        "nameNice": "Loops",
+        "description": "Doing the same thing again and again"
+    },
+    {
+        "name": "lesson7",
         "nameNice": "FizzBuzz",
         "description": "Lets write a simple game"
+    },
+    {
+        "name": "lesson8",
+        "nameNice": "Arrays",
+        "description": "Storing lists of items"
+    },
+    {
+        "name": "lesson9",
+        "nameNice": "Functions",
+        "description": "Make your own functions"
+    },
+    {
+        "name": "lesson10",
+        "nameNice": "Objects",
+        "description": "Welcome to the world of object-orientation"
     }
     ]
 }

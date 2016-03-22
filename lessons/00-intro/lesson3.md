@@ -3,6 +3,8 @@ title: Variables
 ---
 _Time to complete: 5 minutes_
 
+##Goal: store a value in a variable and output it
+
 Being able to output the results of calculations or strings is great, but what if we want to store it and work with it? This is where variables come in. In JS, ```var``` lets you store any type of value, such as strings or numbers. Try it now:
 
 ```javascript
@@ -14,3 +16,5 @@ console.log(myAge);
 ```
 
 Remember to click 'update' once you're done!
+
+Try storing 'dog' in a variable called animal and output it to continue.
