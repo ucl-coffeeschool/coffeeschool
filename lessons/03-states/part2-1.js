@@ -57,7 +57,13 @@ Crafty.defineScene("Game", function() {
       .checkHits("Solid")
       .color("#ff0000") // Specifying the colour of the rectangle
       .bind("EnterFrame", function() { // Binds the "EnterFrame" event to the entity
-          playerVel += g; // Adds the "gravitational acceleration" to the player's velocity
+          if(this.y < 0) {
+            playerVel = g; // Prevent the player from going above the game screen
+          }
+          else {
+            playerVel += g; // Adds the "gravitational acceleration" to the player's velocity
+          }
+
           this.y += playerVel; // Change the player entities y position based on the player velocity
       })
       .bind("KeyDown", function(event) { // Binds the "KeyDown" event to our player entity

@@ -75,7 +75,7 @@ Crafty.e("2D, DOM, Text")
   .text("Score: " + score)
   .textFont({size: '14px', weight: 'bold'})
   .bind("EnterFrame", function() {
-    this.text("Score: " + score); // Here we're just accessing the entities .text property and using it to update the displayed text 
+    this.text("Score: " + score); // Here we're just accessing the entities .text property and using it to update the displayed text
   });
 ```
 
@@ -91,4 +91,42 @@ Crafty.e("2D, DOM, Text")
   .textFont({size: '14px', weight: 'bold'});
 ```
 
-With that change our game now allows the player to keep track of how well they're doing while playing, while also letting them see how well they did once the game ends.
+With that change our game now allows the player to keep track of how well they're doing while playing, while also letting them see how well they did once the game ends. *But wait, what if we want to allow the player to play again without refreshing the page?*
+
+All we need to do to allow this is to move some of our game variables and bind an extra `KeyDown` event (within the "GameOver" scene). Moving the `playerVel` declaration and the `obstacleCounter` declaration into the game loop means that when the player starts another play through the game variables are reset.
+
+Moving the variable declarations:
+1.  Remove `var playerVel = 0;` and `var obstacleCounter = 0;` from the top of our JavaScript.
+2.  Declare them at the top of our "Game" scene.
+
+This code snippet illustrates the desired placing for the variables to work as intended:
+
+```javascript
+Crafty.defineScene("Game", function() {
+  score = 0; // this is where we reset the player score
+
+  var playerVel = 0; // Making the players velocity only accessible within the game scene - while also resetting it so you don't get unintended behaviour
+  var obstacleCounter = 0; // making the obstacle counter accessible only within the game scene - also resetting it so that obstacles are generated as intended
+
+  // Here be game logic and entities!
+});
+```
+
+Next, letting the player have another play through from the game over screen. To let the player do this we can just bind a `KeyDown` to our text entity in the "GameOver" scene, using the `Crafty.enterScene` function.
+
+```javascript
+// Our "GameOver" text entity
+Crafty.e("2D, DOM, Text")
+  .attr({x: sceneWidth/2, y: sceneHeight/2, w: 100, h: 20})
+  .text("Game Over! Your score was: " + score)
+  .textFont({size: '14px', weight: 'bold'})
+  // Here we're binding the KeyDown event
+  .bind("KeyDown", function(event){
+    // If the player presses space, go to the game scene
+    if(event.key == Crafty.keys.SPACE){
+      Crafty.enterScene("Game"); // Go back into the "Game" scene.
+    }
+  });
+```
+
+This lets the player start another play through from the game over screen with a fresh game state. With that last change you've just finished a fully functioning "flappy bird" style game!
