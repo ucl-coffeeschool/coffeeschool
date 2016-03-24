@@ -48,21 +48,27 @@
                 <div id="codeEditor">// Creating environment variables
 var playerSize = 10;
 var sceneWidth = 300, sceneHeight = 150;
-// Create the variables to track player movement 
+// Create the variables to track player movement
 var playerVel = 0; // Stores the player&#x27;s velocity
 var g = 0.4;       // The constant acceleration cause by &quot;gravity&quot;
 
 // Create our player&#x27;s base entity
-Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add 
+Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add
     .attr({x: 30, y: 30, w: playerSize, h: playerSize}) // Specifying the dimensions and the point to draw from
     .color(&quot;#ff0000&quot;) // Specifying the colour of the rectangle
     .bind(&quot;EnterFrame&quot;, function() { // Binds the &quot;EnterFrame&quot; event to the entity
-        playerVel += g; // Adds the &quot;gravitational acceleration&quot; to the player&#x27;s velocity 
+        if(this.y &lt; 0) {
+          playerVel = g; // Prevent the player from going above the game screen
+        }
+        else {
+          playerVel += g; // Adds the &quot;gravitational acceleration&quot; to the player&#x27;s velocity
+        }
+
         this.y += playerVel; // Change the player entities y position based on the player velocity
     })
     .bind(&quot;KeyDown&quot;, function(event) { // Binds the &quot;KeyDown&quot; event to our player entity
-        if(event.key == Crafty.keys.SPACE){ // If the key is the spacebar then &quot;flap&quot; 
-            playerVel = -5; // Sets the player&#x27;s speed and direction to go upwards     
+        if(event.key == Crafty.keys.SPACE){ // If the key is the spacebar then &quot;flap&quot;
+            playerVel = -5; // Sets the player&#x27;s speed and direction to go upwards
         }
     });
 </div>

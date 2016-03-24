@@ -89,10 +89,28 @@ Crafty.e(&quot;2D, DOM, Color&quot;) // Specifying the components to add
     }
 });
 </code></pre>
-<p>This code checks if the <code>event</code> passed to the function has the value of the spacebar for it’s <code>key</code> property. </p>
+<p>This code checks if the <code>event</code> passed to the function has the value of the spacebar for it’s <code>key</code> property.</p>
 <p>To complete the jumping ability of the player we need to make the input do something! <em>Try setting the variable <code>playerVel</code> to -5 inside the if statement.</em></p>
 <p><strong>Once you’ve added in your input try it out by hitting the “update” button.</strong>
 <em>If it falls too fast to try it out have a go at changing the value of g!</em></p>
+<p><em>But what happens if you keep hitting the space bar?</em> The player can go above the game screen! This will become a problem when we have our objects because then the player can fly over the top of them. To stop this from happening we can check for out player’s position in our gravity behaviour and change the player velocity to prevent going above the game:</p>
+<pre><code class="lang-javascript">.bind(&quot;EnterFrame&quot;, function() {
+  // We want to replace our original gravity behaviour with some conditional behaviour
+  if(this.y &lt; 0){
+    // If the player is above the screen then set their velocity to our gravity value
+    playerVel= g;
+  }
+  // If the player isn&#39;t at the ceiling then have normal gravity behaviour
+  else {
+    playerVel += g;
+  }
+
+  this.y += playerVel;
+})
+.bind(&quot;KeyDown&quot;, function(event) {
+  // Our jumping control
+});
+</code></pre>
 
                     </div>
                 </div>
