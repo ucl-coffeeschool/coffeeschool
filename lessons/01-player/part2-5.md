@@ -28,9 +28,30 @@ To check the key pressed we will write an if statement within the `KeyDown` even
 });
 ```
 
-This code checks if the `event` passed to the function has the value of the spacebar for it's `key` property. 
+This code checks if the `event` passed to the function has the value of the spacebar for it's `key` property.
 
 To complete the jumping ability of the player we need to make the input do something! *Try setting the variable `playerVel` to -5 inside the if statement.*
 
 **Once you've added in your input try it out by hitting the "update" button.**
 *If it falls too fast to try it out have a go at changing the value of g!*
+
+*But what happens if you keep hitting the space bar?* The player can go above the game screen! This will become a problem when we have our objects because then the player can fly over the top of them. To stop this from happening we can check for out player's position in our gravity behaviour and change the player velocity to prevent going above the game:
+
+```javascript
+.bind("EnterFrame", function() {
+  // We want to replace our original gravity behaviour with some conditional behaviour
+  if(this.y < 0){
+    // If the player is above the screen then set their velocity to our gravity value
+    playerVel= g;
+  }
+  // If the player isn't at the ceiling then have normal gravity behaviour
+  else {
+    playerVel += g;
+  }
+
+  this.y += playerVel;
+})
+.bind("KeyDown", function(event) {
+  // Our jumping control
+});
+```
