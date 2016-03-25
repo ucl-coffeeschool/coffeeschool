@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Lesson 2 - Coffee School</title>
+    <title>Lesson 10 - Coffee School</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="css/main.css" rel="stylesheet">
@@ -37,7 +37,7 @@
     <div class="main">
         <header>
             <div id="menu-button"><i class="fa fa-bars"></i></div>
-            <h1>Coffee School <i class="fa fa-code"></i><em></em></h1>
+            <h1>Coffee School <i class="fa fa-code"></i><em>Objects</em></h1>
         </header>
         <div class="container">
             <div class="flex-container div-half">
@@ -54,29 +54,17 @@
                     <h2>Console Log:</h2>
                     <div class="div-content" id="log-div"> </div>
                     <div class="div-content">
-                        <h1></h1>
-                        <h2 id="part-1-creating-the-ground">Part 1: Creating the Ground</h2>
-<p><em>Time estimate for Part 1: 5 minutes</em></p>
-<h3 id="goal-draw-the-ground">Goal: Draw the ground</h3>
-<p>To create our ground we’re going to use a rectangular entity similar in a similar vein to the base player avatar we used, however we can replace the <code>DOM</code> component with the <code>Canvas</code> one and make use of the scene variables that we created at the end of the last lesson.</p>
-<p>The code to draw the ground entity is the following, and we’ll place it before our code for the player:</p>
-<pre><code class="lang-javascript">Crafty.e(&quot;2D, Canvas, Color&quot;) // Adding the 2D, Canvas and Color components
-    .attr({x: 0,
-           y: playAreaHeight,// We haven&#39;t yet declared this value.
-           w: sceneWidth,    // This was declared earlier when getting rid of &quot;hard coded&quot; values
-           h: groundHeight}) // Bear with us on these undeclared variables!
-    .color(&quot;#00ff00&quot;);
+                        <h1>Objects</h1>
+                        <p><em>Time to complete: 5 minutes</em></p>
+<p>In JavaScript you can have objects, which can have properties and methods. They can be used to represent real-world object, such as a user or a car, and allow us to manipulate it. A property can either be a variable or a function, in which case it is called a method.</p>
+<p>lets create an object</p>
+<pre><code class="lang-javascript">var myUser = new Object();
+myUser.name = &quot;Tom&quot;;
+myUser.age = 16;
+
+console.log(myUser.name + &quot; is aged &quot; + myUser.age);
 </code></pre>
-<p>The entity which we have written code for isn’t yet valid, as we haven’t declared the <code>playeAreaHeight</code> or <code>groundHeight</code> variables yet. We should fix this and create them so that our code is valid.</p>
-<p>Let’s place the groundHeight and playAreaHeight variables at the top of our JavaScript along with the other game and scene variables. For our ground height we’re going to use a value of 10 pixels (but feel free to play about with this later!).</p>
-<pre><code class="lang-javascript">var groundHeight = 10;
-</code></pre>
-<p>Now the other variable, the <code>playAreaHeight</code>, is the area between the top of the ground and the top of the game scene. So to set the <code>playAreaHeight</code> we’re going to use our value for <code>groundHeight</code> which means we must place it after the <code>groundHeight</code> variable, resulting in something like this:</p>
-<pre><code class="lang-javascript">var groundHeight = 10;
-var playAreaHeight = (sceneHeight - groundHeight);
-</code></pre>
-<p>You may have noticed that while our ground entity starts with an x coordinate of 0, we set it’s y coordinate to playAreaHeight. <em>This is a result of the coordinate system having (0,0) as the top left corner of the scene, as mentioned earlier</em>.</p>
-<p>We’ve made the values of the attributes for the ground variables because as you’ll see shortly we want to reuse these values when creating our obstacles! (That way we can be lazy if we need to make a change to a value later and only change it once. <strong>The best kind of lazy</strong>).</p>
+<p>You can now access modify the name and age properites of myUser as you wish. We will expand upon the use of objects in later lessons.</p>
 
                     </div>
                 </div>
@@ -87,7 +75,7 @@ var playAreaHeight = (sceneHeight - groundHeight);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script defer>
         $(document).ready(function() {
-    $('#nextLesson').addClass("lessonComplete");
+    $('#nextLesson, #sectionButton').addClass("lessonComplete");
 });
 
 var codeTest = function() {

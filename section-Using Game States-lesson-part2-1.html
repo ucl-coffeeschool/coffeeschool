@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Lesson 4 - Coffee School</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    <script src="js/prism.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <!-- nav stuff. -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sections.html" class="active">Sections</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="nagbar" style="display:none">
+        <p>Your code doesn't seem to do what we're looking for. Check it and try again!</p>
+        <i class="fa fa-close"></i>
+    </div>
+
+    <!-- Main content. -->
+    <div class="overlay" style="display:none">
+        <span class="closeButton"><i class="fa fa-close"></i></span>
+            <h1>Lesson completed!</h1>
+            <h2>Give yourself a pat on the back.</h2>
+            <a href="section-Using Game States-lesson-part2-2.html">Next lesson!</a>
+    </div>
+    <div class="main">
+        <header>
+            <div id="menu-button"><i class="fa fa-bars"></i></div>
+            <h1>Coffee School <i class="fa fa-code"></i><em>Game Lesson Three - Using Game States</em></h1>
+        </header>
+        <div class="container">
+            <div class="flex-container div-half">
+                <h2>Code Editor <button id="code-compile"><i class="fa fa-play"></i> Update</button><span id="syntax-msg"></span>
+                        <button id="nextLesson" onClick="window.location = 'section-Using Game States-lesson-part2-2.html'"><i class="fa fa-arrow-right"></i> Next Lesson</button>
+                        </h2>
+
+                <div id="codeEditor">// Creating environment variables
+var playerSize = 10;
+var sceneWidth = 300, sceneHeight = 150;
+var groundHeight = 10;
+var playAreaHeight = (sceneHeight - groundHeight);
+// Create the variables to track player movement
+var playerVel = 0; // Stores the player&#x27;s velocity
+var g = 0.4;       // The constant acceleration cause by &quot;gravity&quot;
+// Object width!
+var objectWidth = 2 * playerSize;
+// Obstacle Counter
+var obstacleCounter = 0;
+
+// Sets the background colour
+Crafty.background(&quot;#ADD8E6&quot;);
+
+Crafty.defineScene(&quot;Start&quot;, function() {
+  // Introductory text
+  Crafty.e(&quot;2D, DOM, Text&quot;)
+      .attr({x: sceneWidth/2, y: sceneHeight/2, w: 100, h: 20})
+      .text(&quot;Press &#x27;space&#x27; to begin&quot;)
+      .css({&quot;text-align&quot;:&quot;center&quot;})
+
+  // &quot;Dummy&quot; player
+  Crafty.e(&quot;2D, DOM, Color&quot;)
+      .attr({x: 30,y: 30, w: playerSize, h: playerSize})
+      .color(&quot;#ff0000&quot;)
+      // Handle any keypress events
+      .bind(&quot;KeyDown&quot;, function(event) {
+          // If the key pressed is the space bar then move to the &quot;Game&quot; scene
+          if(event.key == Crafty.keys.SPACE) {
+              Crafty.enterScene(&quot;Game&quot;);
+          }
+      });
+
+  // Dummy ground
+  Crafty.e(&quot;2D, DOM, Color&quot;)
+      .attr({x: 0, y: playAreaHeight, w: sceneWidth, h: groundHeight})
+      .color(&quot;#00ff00&quot;);
+});
+
+// Enter the start scene
+Crafty.enterScene(&quot;Start&quot;);
+
+Crafty.defineScene(&quot;Game&quot;, function() {
+  // Create the ground!
+  Crafty.e(&quot;Solid, 2D, DOM, Color&quot;)
+      .attr({x: 0,
+             y: playAreaHeight,
+             w: sceneWidth,
+             h: groundHeight})
+      .color(&quot;#00ff00&quot;);
+
+  // Create our player&#x27;s base entity
+  Crafty.e(&quot;Collision, 2D, DOM, Color&quot;) // Specifying the components to add
+      .attr({x: 30, y: 30, w: playerSize, h: playerSize}) // Specifying the dimensions and the point to draw from
+      .checkHits(&quot;Solid&quot;)
+      .color(&quot;#ff0000&quot;) // Specifying the colour of the rectangle
+      .bind(&quot;EnterFrame&quot;, function() { // Binds the &quot;EnterFrame&quot; event to the entity
+          if(this.y &lt; 0) {
+            playerVel = g; // Prevent the player from going above the game screen
+          }
+          else {
+            playerVel += g; // Adds the &quot;gravitational acceleration&quot; to the player&#x27;s velocity
+          }
+
+          this.y += playerVel; // Change the player entities y position based on the player velocity
+      })
+      .bind(&quot;KeyDown&quot;, function(event) { // Binds the &quot;KeyDown&quot; event to our player entity
+          if(event.key == Crafty.keys.SPACE){ // If the key is the spacebar then &quot;flap&quot;
+              playerVel = -5; // Sets the player&#x27;s speed and direction to go upwards
+          }
+      })
+      .bind(&quot;HitOn&quot;, function() {
+          Crafty.pause();
+      })
+      .bind(&quot;EnterFrame&quot;, function() {
+          Crafty(&quot;Obstacle&quot;).each(function() {
+              if(this.x &lt; -objectWidth) {
+                  this.destroy();
+              }
+              else {
+                  this.x -= 3;
+              }
+
+          });
+
+          if(obstacleCounter &gt; 100){
+              obstacleCounter = 0;
+              newObstacle();
+          }
+
+          obstacleCounter++;
+
+      });
+});
+
+
+function newObstacle()
+{
+    var randomHeight = Math.floor((Math.random() * (sceneHeight/2)) + (sceneHeight/3));
+    var bottomOfTopHalf = playAreaHeight - randomHeight;
+    var topOfBottomHalf = bottomOfTopHalf + (4 * playerSize);
+
+    // Create the top half of the pipe
+    Crafty.e(&quot;Obstacle, 2D, DOM, Color, Solid&quot;)
+        .attr({x: sceneWidth,
+               y: 0,
+               w: objectWidth,
+               h: bottomOfTopHalf})
+        .color(&quot;#003319&quot;);
+
+    // Create the bottom half of the pipe
+    Crafty.e(&quot;Obstacle, 2D, DOM, Color, Solid&quot;)
+        .attr({x: sceneWidth,
+               y: topOfBottomHalf,
+               w: objectWidth,
+               h: playAreaHeight - topOfBottomHalf})
+        .color(&quot;#003319&quot;);
+}
+</div>
+            </div>
+            <div class="flex-container div-half">
+                <div class="flex-container">
+                    <h2>Preview</h2>
+                    <div class="div-content" id="game-container">
+                    </div>
+                    <h2>Console Log:</h2>
+                    <div class="div-content" id="log-div"> </div>
+                    <div class="div-content">
+                        <h1>Game Lesson Three - Using Game States</h1>
+                        <h2 id="part-2-creating-the-game-over-screen-and-keeping-score">Part 2: Creating the Game Over Screen and Keeping Score</h2>
+<h3 id="goal-creating-the-game-over-scene-and-displaying-text-in-it-">Goal: Creating the game over scene and displaying text in it.</h3>
+<p>Now that we have a start screen for our game we can create a game over screen for when the player loses the game. The game over screen can be used to show the player some text, in our case showing what score they managed to obtain before losing.</p>
+<p>To create our game over screen we’re going to use a Crafty Scene again. Let’s place it between our <code>Crafty.enterScene</code> command for the Start Screen and the <code>Crafty.defineScene</code> command for the “Game” scene, using the same code that was used to define the other scenes:</p>
+<pre><code class="lang-javascript">Crafty.defineScene(&quot;GameOver&quot;, function(){
+    // Game over screen stuff goes here
+});
+</code></pre>
+<p>In the Game Over screen we can show some text to the player to tell them that they’ve lost, as well as drawing the ground to make the game over screen look a bit nicer.</p>
+<p>To draw the text we can create a Crafty entity with the text component just like we did in the start screen.</p>
+<pre><code class="lang-javascript">Crafty.e(&quot;2D, DOM, Text&quot;)
+  .attr({x: sceneWidth/2, y: sceneHeight/2, w: 100, h: 20})
+  .text(&quot;Game Over!&quot;)
+  .textFont({size: &#39;14px&#39;, weight: &#39;bold&#39;});
+</code></pre>
+<p>This text should go inside the “Game Over” scene we just made! Once the text is inside we can add the ground visual like we did in the start screen:</p>
+<pre><code class="lang-javascript">Crafty.e(&quot;2D, DOM, Color&quot;)
+  .attr({x: 0, y: playAreaHeight, w: sceneWidth, h: groundHeight})
+  .color(&quot;#00ff00&quot;);
+</code></pre>
+<p>Now that we have a game over screen we can change what happens in our “Game” scene when the player collides with an obstacle! We no longer need to use <code>Crafty.pause</code> on a collision because we now have the game over screen to change to.</p>
+<p>All we need to do is swap out the <code>Crafty.pause();</code> statement in the “HitOn” bind with the following scene change:</p>
+<pre><code class="lang-javascript">Crafty.enterScene(&quot;GameOver&quot;);
+</code></pre>
+<p>Now that we have a game over scene to switch to, we can keep score and show it on the game over which is what we’ll be doing next!</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script defer>
+        $(document).ready(function() {
+    $('#nextLesson, #sectionButton').addClass("lessonComplete");
+});
+
+var codeTest = function() {
+    return "notest";
+}
+
+    </script>
+    <!-- Editor (ace) -->
+
+    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ace/1.2.3/min/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
